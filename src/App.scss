@@ -1,0 +1,555 @@
+// @import 'components/pokemon/pokemon-card/pokemon-card.scss';
+
+// variables can be declared and later reused
+$origin-light-green: #5df384;
+$revature-orange-light: #f3a55d;
+$revature-orange: #f26925;
+$drew-orange: #f3a55d;
+$rounded-amount: 0.5em;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// mixins are reusable styles that can be included in other places
+@mixin origin-gradient {
+  background: -webkit-linear-gradient(right, $origin-light-green, #acc5c9);
+  background: -webkit-linear-gradient(right, $origin-light-green, #8bdde7);
+  background: -moz-linear-gradient(right, $origin-light-green, #eaf1f1);
+  background: -o-linear-gradient(right, $origin-light-green, #e1e9eb);
+  background: linear-gradient(to left, $origin-light-green, #e1e7e7);
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin rounded-top {
+  border-top-left-radius: $rounded-amount;
+  border-top-right-radius: $rounded-amount;
+}
+
+/* @include transition(all,2s,ease-out); */
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
+  -webkit-transition: $what $time $how;
+  -moz-transition:    $what $time $how;
+  -ms-transition:     $what $time $how;
+  -o-transition:      $what $time $how;
+  transition:         $what $time $how;
+}
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+      @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+      @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+      @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+      @content;
+  }
+}
+
+/*******************************************
+  Positioning
+*******************************************/
+.align-start {
+  align-self: flex-start
+}
+/********************************************
+  Shared
+********************************************/
+.cursor-hover:hover {
+  cursor: pointer;
+}
+
+.no-link:hover {
+  text-decoration: none;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-package {
+  display:    flex;
+  flex-shrink: 0;
+}
+
+.rev-btn:not(.dropdown), .rev-btn > button.dropdown-toggle {
+  background-color: $revature-orange-light !important;
+  border-color: $revature-orange-light !important;
+  color: black !important;
+  &:hover {
+    background-color: white;
+    border-color: $revature-orange-light;
+    color: $revature-orange-light;
+  }
+  &:active {
+    background-color: $revature-orange-light;
+    color: black;
+    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5) !important;
+  }
+  &:active, &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5) !important;
+  } 
+
+}
+
+li > a.rev-btn-tab {
+  background-color: white;
+  border-color: $revature-orange-light;
+  color: black;
+  &:hover {
+    background-color: white;
+    border-color: $revature-orange-light;
+    color: $revature-orange-light;
+  }
+  &:active {
+    color: black;
+    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5);
+    border-color: $revature-orange-light
+  }
+  &:active, &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5);
+  }
+}
+.rev-table-row:hover {
+  -webkit-box-shadow: inset 0px 0px 15px 5px $revature-orange-light;
+  -moz-box-shadow: inset 0px 0px 15px 5px $revature-orange-light;
+  box-shadow: inset 0px 0px 15px 5px $revature-orange-light;
+  cursor: pointer;
+}
+
+
+.rev-background-color {
+  background-color: $revature-orange-light;
+}
+
+.rev-color { 
+  color: $revature-orange;
+}
+
+.responsive-modal-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include md {
+    flex-direction: row;
+  }
+
+  .responsive-modal-row-item {
+    margin-right: 0.3em;
+    margin-bottom: 0.7em;
+  } 
+  
+}
+
+.dropdown-item { 
+  &:active {
+    background-color: $revature-orange-light;
+  }
+  &:focus {
+    outline-color: $revature-orange;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $revature-orange-light;
+  }
+}
+
+.form-control {
+  &:focus {
+    border-color: $revature-orange-light;
+    box-shadow: 0 0 0.2rem 0.1rem $revature-orange-light;
+  }
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+
+  @include sm {
+    max-width: 90%;
+    margin: 1em auto;
+  }
+
+  @include md {
+    max-width: 70%;
+    margin: 2em auto;
+  }
+
+  @include lg { 
+    max-width: 900px;
+  }
+}
+
+
+/****************************************
+  App
+****************************************/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+#main-content-container {
+  @include flex-col;
+  width: 100%;
+  align-items: center;
+  margin:auto;
+  @include md {
+    max-width: 80%
+  }
+}
+
+
+
+/*****************************
+  NAV
+*****************************/
+
+.nav-dropdown {
+  background-color: unset;
+  border: unset;
+  color: black;
+  text-decoration: none;
+  &:hover, &:focus {
+    color: black;
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: unset;
+    border: unset;
+    color: $revature-orange;
+    cursor: pointer;
+  }
+  &:active {
+    background-color: unset !important;
+    border: unset !important;
+    color: black !important;
+  }
+  &:active, &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5);
+  }
+}
+
+.rev-logo {
+  width: auto;
+  height: 2em;
+  margin-right: 2em;
+}
+
+.margin-nav {
+  margin-right: 2em
+}
+
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: rgba(0,0,0,.7);
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+  padding-right: .75rem !important;
+  padding-left: .75rem !important;
+}
+
+.bg-light {
+  background-color: #ffffff !important;
+}
+
+.app-nav {
+  border-bottom: 1px solid #ffffff !important;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 1px -12px 28px -1px rgba(0, 0, 0, 0.87);
+  -moz-box-shadow: 1px -12px 28px -1px rgba(0, 0, 0, 0.87);
+  box-shadow: 1px -12px 28px -1px rgba(0, 0, 0, 0.87);
+  @include origin-gradient;
+}
+
+#examples-dropdown {
+  cursor: pointer;
+}
+
+/*********************************
+  Character Card
+*********************************/
+#character-card {
+  width: 100%;
+  @include sm {
+    width: 95%
+  }
+
+  @include md {
+    width: 90%;
+  }
+
+  @include lg {
+    width: 80%;
+  }
+}
+
+#fadesrip-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.fadesrip-icon {
+  height: 2em;
+  width: 2em;
+}
+
+.ability-name {
+  text-align: start;
+}
+.ability-power {
+  text-align: start;
+}
+.ability-mechanic {
+  text-align: end;
+}
+/*****************************
+  Clicker
+*****************************/
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+/************************************
+          login.component.tsx
+************************************/
+#login-pass {
+  margin: 0.3em
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1200px) { 
+  .top-lev-div{
+    margin-top:50px;
+    zoom: 1.5;
+    -moz-transform: scale(1.5);
+  } 
+}
+
+@media (max-width: 1199.99px) { 
+  .top-lev-div{
+    margin-top:50px;
+    zoom: 1.0;
+    -moz-transform: scale(1.0);
+  } 
+
+}
+
+.frontDiv {
+  z-index: 3;
+  position: absolute;
+}
+
+.behindDiv {
+  z-index: 2;
+
+}
+
+.box input {
+  margin-left:0;
+  -webkit-transition: 1s;
+          transition: 1s;
+}
+
+.txt-bx{
+  width: 250px;
+}
+
+.rememberDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+  border-bottom:solid rgb(245, 139, 0) 4px;
+}
+
+.resetDiv {
+  margin:auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+.rememberSpan {
+  display: inline;
+  float: none;
+}
+
+#rememberCheck {
+  display: inline;
+}
+
+#titleHead{
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+#forgot-pass-btn{
+  color: blue;
+  margin-top: 0.5em;
+  border: none;
+  text-align: center;
+  background-color: transparent;
+  -webkit-transition: 1s;
+          transition: 1s;
+}
+
+#invalidCredHead {
+  color: red;
+  text-align: center;
+  padding-top: 10px;
+}
+
+
+
+/***********************************
+  Manage
+***********************************/
+#manage-users-container {
+  width: 100%;
+}
+.manage-users-nav {
+  padding-left: 0;
+  padding-bottom: 0;
+  .nav-tabs {
+    border: none;
+  }
+}
+
+.manage-user-nav-item {
+  color: gray;
+  &:hover {
+    color: $revature-orange;
+  }
+}
+
+.nav-tabs .manage-user-nav-item-active {
+  border: 2px solid;
+  border-color: #d6dce2;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  border-bottom: none;
+  color: $revature-orange-light;
+  &:hover {
+    color: $revature-orange-light;
+  }
+  &:focus {
+    border-color: #d6dce2;
+  }
+}
+
+#create-user-modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+#manage-associates-nav {
+  display: flex;
+  padding: 0.25em 0.75rem;
+  align-items: center;
+  @include rounded-top();
+}
+
+#manage-users-table {
+  margin-top: 1px;
+  @include rounded-top();
+  thead {
+    @include rounded-top();
+    tr {
+      @include rounded-top();
+      th {
+        border: none;
+      }
+      :first-child {
+        border-top-left-radius: $rounded-amount;
+        border: none;
+      }
+      :last-child {
+        border-top-right-radius: $rounded-amount;
+        border: none;
+      }
+    }
+  }
+}
