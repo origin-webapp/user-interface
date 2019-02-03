@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { FaUserPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Nav, NavItem } from 'reactstrap';
 import NavLink from 'reactstrap/lib/NavLink';
 import Navbar from 'reactstrap/lib/Navbar';
+import { FaUserPlus } from '../../../assets/icons';
 
 
 interface IManageNavComponentProps {

@@ -26,7 +26,6 @@ export class CharacterCardComponent extends React.Component {
         <div className="card-body">
           <FadesripDisplayComponent />
         </div>
-        <hr />
         <div className="card-body">
           <AbilitiesDisplayComponent />
         </div>

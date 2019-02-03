@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
-// import RevLogo from '../../assets/rev-logo.png';
 import { IState, IAuthState } from '../../reducers';
 import { connect } from 'react-redux';
 import { setup, logout } from '../../actions/auth/auth.actions';
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router";
+// import OriginLogo from '../../assets/jax-eye-2.png';
 
 interface IProps extends RouteComponentProps<{}> {
   logout: () => void;
@@ -32,7 +32,7 @@ class AppNav extends React.PureComponent<IProps, {}, {}> {
         <nav className="app-nav navbar navbar-toggleable-md navbar-expand-lg navbar-light bg-light display-front nav-pad">
           <div className="navbar-header c-pointer shift-left">
             <Link to="/home" className="unset-anchor">
-              {/* <img className="img-adjust-position rev-logo" src={RevLogo} alt="revature" /> */}
+              {/* <img className="img-adjust-position rev-logo" src={OriginLogo} alt="revature" /> */}
               Origin
             </Link>
           </div>
