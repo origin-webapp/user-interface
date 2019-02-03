@@ -10,6 +10,7 @@ phases:
       - npm run ${BUILD_COMMAND}
   post_build:
     commands:
+      - cd build && rm favicon.ico
       - echo "$CODEBUILD_BUILD_SUCCEEDING"
       # if build succeeds copy the dist folder into the s3 bucket
       - |

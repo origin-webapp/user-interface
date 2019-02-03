@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { FadesripDisplayComponent } from './fadesrip-display/fadesrip-display.component';
-import { AbilitiesDisplayComponent } from './abilities-display/abilities-display.component';
+import { PowersDisplayComponent } from './powers-display/powers-display.component';
 
 
 
@@ -27,7 +27,7 @@ export class CharacterCardComponent extends React.Component {
           <FadesripDisplayComponent />
         </div>
         <div className="card-body">
-          <AbilitiesDisplayComponent />
+          <PowersDisplayComponent />
         </div>
       </div>
     );

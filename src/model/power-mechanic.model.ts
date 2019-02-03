@@ -2,15 +2,17 @@ export class PowerMechanic {
   public id: number;
   public name: string;
   public description: string;
-  public wellCost: number;
-  public healthCost: number;
+  public wellCostMultiplier: number;
+  public healthCostMultiplier: number;
+  public costScalesWithMaxAbility: boolean;
 
-  constructor(id?: number, name?: string, description?: string, wellCost?: number, healthCost?: number) {
-    this.id = id ? id : 0;
-    this.name = name ? name : '';
-    this.description = description ? description : '';
-    this.wellCost = wellCost ? wellCost : 0;
-    this.healthCost = healthCost ? healthCost : 0;
+  constructor(id = 0, name = '', description = '', wellCostMultiplier = 0, healthCostMultiplier = 0, costScalesWithMaxAbility = false) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.wellCostMultiplier = wellCostMultiplier;
+    this.healthCostMultiplier = healthCostMultiplier;
+    this.costScalesWithMaxAbility = costScalesWithMaxAbility;
   }
 
 }
