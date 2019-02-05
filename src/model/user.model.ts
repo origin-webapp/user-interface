@@ -1,4 +1,3 @@
-import { IAddress } from "./address.model";
 
 export interface IUser {
   email:      string;
@@ -6,5 +5,4 @@ export interface IUser {
   firstName:  string;
   lastName:   string;
   mobile:     string,
-  address:    IAddress
 }

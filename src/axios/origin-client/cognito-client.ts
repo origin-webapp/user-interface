@@ -1,4 +1,4 @@
-import { smsClient } from ".";
+import { originClient } from ".";
 import { ICognitoUserAddGroup } from "../../model/cognito-user-add-group.model";
 
 const cognitoContext = '/cognito'
@@ -13,12 +13,12 @@ const urls = {
 
 export const cognitoClient = {
   findUsersByGroup(groupName: string) {
-    return smsClient.get(urls.findUsersByGroup(groupName));
+    return originClient.get(urls.findUsersByGroup(groupName));
   },
   addUserToGroup(body: ICognitoUserAddGroup) {
-    return smsClient.put(urls.addUserToGroup, body);
+    return originClient.put(urls.addUserToGroup, body);
   },
   auth() {
-    return smsClient.get(urls.auth);
+    return originClient.get(urls.auth);
   }
 }

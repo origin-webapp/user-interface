@@ -3,15 +3,15 @@ import { environment } from '../../environment';
 
 let jwt = '';
 
-export const smsClient = axios.create({
-  baseURL: environment.smsContext,
+export const originClient = axios.create({
+  baseURL: environment.originContext,
   headers: {
     'Content-Type': 'application/json'
   }
 });
 
 // Create interceptor to add the token into the header for every request
-smsClient.interceptors.request.use((config) => {
+originClient.interceptors.request.use((config) => {
   config.headers.Authorization = jwt
   return config;
 });

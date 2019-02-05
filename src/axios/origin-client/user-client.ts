@@ -1,4 +1,4 @@
-import { smsClient } from ".";
+import { originClient } from ".";
 import { IUser } from "../../model/user.model";
 
 const usersContext = '/users'
@@ -8,6 +8,6 @@ const urls = {
 
 export const userClient = {
   saveUser(newUser: IUser) {
-    return smsClient.post(urls.saveUser, newUser);
+    return originClient.post(urls.saveUser, newUser);
   }
 }

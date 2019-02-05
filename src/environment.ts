@@ -2,21 +2,21 @@ const dev = {
   awsRegion:          'us-east-1',
   cognitoClientId:    '',
   cognitoUserPoolId:  '',
-  smsContext:         ''
+  originContext:      'http://localhost:5500'
 };
 
 const uat = {
   awsRegion:          'us-east-1',
   cognitoClientId:    '',
   cognitoUserPoolId:  '',
-  smsContext:         ''
+  originContext:         ''
 };
 
 const prod = {
   awsRegion:          'us-east-1',
   cognitoClientId:    '',
   cognitoUserPoolId:  '',
-  smsContext:         ''
+  originContext:         ''
 };
 
 console.log(process.env.NODE_ENV);

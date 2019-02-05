@@ -1,4 +1,4 @@
-import { cognitoClient } from "../../axios/sms-clients/cognito-client";
+import { cognitoClient } from "../../axios/origin-client/cognito-client";
 import { toast } from "react-toastify";
 
 export const manageUsersTypes = {

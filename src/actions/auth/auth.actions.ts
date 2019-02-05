@@ -5,7 +5,7 @@ import { History } from 'history';
 import { ICognitoUser } from '../../model/cognito-user.model';
 // import { toast } from 'react-toastify';
 import Amplify, { Auth } from 'aws-amplify';
-import { refreshJwt } from '../../axios/sms-clients';
+import { refreshJwt } from '../../axios/origin-client';
 // import Axios from 'axios';
 
 Amplify.configure({

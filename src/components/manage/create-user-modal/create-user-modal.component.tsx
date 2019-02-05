@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter,
-  InputGroup, InputGroupText, InputGroupAddon, Input,
-  Dropdown, DropdownToggle, DropdownMenu, DropdownItem
+  InputGroup, InputGroupText, InputGroupAddon, Input
 } from 'reactstrap';
 import { ICreateUserModal } from './create-user-modal.container';
 
@@ -18,10 +17,6 @@ const inputNames = {
 export class CreateUserModal extends React.Component<ICreateUserModal, any> {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    this.props.updateLocations();
   }
 
   updateNewUserInfo = (e) => {
@@ -67,7 +62,7 @@ export class CreateUserModal extends React.Component<ICreateUserModal, any> {
 
   render() {
 
-    const { createUser, addresses } = this.props;
+    const { createUser } = this.props;
     return (
       <Modal isOpen={this.props.createUser.enabled}>
         <form onSubmit={this.saveNewUser}>
@@ -84,25 +79,6 @@ export class CreateUserModal extends React.Component<ICreateUserModal, any> {
                   valid={!!createUser.newUser.email}
                   invalid={!createUser.newUser.email} />
               </InputGroup>
-              <Dropdown color="success" className="responsive-modal-row-item rev-btn"
-                isOpen={this.props.createUser.locationDropdownActive}
-                toggle={this.props.toggleLocationDropdown}>
-                <DropdownToggle caret>
-                  {createUser.newUser.address.alias || 'Location'}
-                </DropdownToggle>
-                <DropdownMenu>
-                  {
-                    addresses.trainingAddresses.length === 0
-                      ? <>
-                        <DropdownItem>Unable To Find Any Locations</DropdownItem>
-                        <DropdownItem divider />
-                      </>
-                      : addresses.trainingAddresses.map(location =>
-                        <DropdownItem key={location.addressId} onClick={() => this.props.updateNewUserLocation(location)}>{location.alias}</DropdownItem>
-                      )
-                  }
-                </DropdownMenu>
-              </Dropdown>
             </div>
             <div className="responsive-modal-row">
               <Input name={inputNames.FIRST_NAME}

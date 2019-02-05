@@ -2,10 +2,18 @@ import * as React from 'react';
 
 import { FadesripDisplayComponent } from './fadesrip-display/fadesrip-display.component';
 import { PowersDisplayComponent } from './powers-display/powers-display.component';
+import { IMyCharactersState } from '../../reducers';
 
+export interface ICharacterCardComponentProps {
+  myCharacters: IMyCharactersState,
+  refreshMyCharactersList
+}
 
+export class CharacterCardComponent extends React.PureComponent<ICharacterCardComponentProps> {
 
-export class CharacterCardComponent extends React.Component {
+  componentDidMount() {
+    this.props.refreshMyCharactersList('btkruppa513@gmail.com');
+  }
 
   public render() {
     return (

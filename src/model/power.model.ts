@@ -1,4 +1,4 @@
-import { PowerMechanic } from "./power-mechanic.model";
+import { PowerMechanic } from './power-mechanic.model';
 
 export class Power {
   public id: number;
