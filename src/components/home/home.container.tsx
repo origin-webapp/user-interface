@@ -1,7 +1,7 @@
 import { IState } from "../../reducers";
 import { connect } from "react-redux";
-import { CharacterCardComponent } from "./character-card.component";
 import { refreshMyCharactersList } from "src/actions/my-characters/my-characters.actions";
+import { HomeComponent } from "./home.component";
 
 
 const mapStateToProps = (state: IState) => ({
@@ -12,4 +12,4 @@ const mapDispatchToProps = {
   refreshMyCharactersList
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CharacterCardComponent);
+export const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);

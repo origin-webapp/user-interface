@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Power } from '../../../model/power.model';
+import { Power } from '../../../../model/power.model';
 import { Popover, PopoverBody, Row, Col } from 'reactstrap';
 import PopoverHeader from 'reactstrap/lib/PopoverHeader';
 

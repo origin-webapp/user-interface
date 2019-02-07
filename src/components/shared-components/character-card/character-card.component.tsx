@@ -2,22 +2,23 @@ import * as React from 'react';
 
 import { FadesripDisplayComponent } from './fadesrip-display/fadesrip-display.component';
 import { PowersDisplayComponent } from './powers-display/powers-display.component';
-import { IMyCharactersState } from '../../reducers';
+import Character from 'src/model/character.model';
 
 export interface ICharacterCardComponentProps {
-  myCharacters: IMyCharactersState,
-  refreshMyCharactersList
+  character: Character,
 }
 
 export class CharacterCardComponent extends React.PureComponent<ICharacterCardComponentProps> {
 
-  componentDidMount() {
-    this.props.refreshMyCharactersList('btkruppa513@gmail.com');
-  }
+
 
   public render() {
+    const character = this.props.character;
     return (
       <div id="character-card" className="card text-center">
+        <div className="card-header">
+          {character.name}
+        </div>
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
             <li className="nav-item">
@@ -32,10 +33,10 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
           </ul>
         </div>
         <div className="card-body">
-          <FadesripDisplayComponent />
+          <FadesripDisplayComponent stats={character.stats} />
         </div>
         <div className="card-body">
-          <PowersDisplayComponent />
+          <PowersDisplayComponent powers={character.powers} />
         </div>
       </div>
     );

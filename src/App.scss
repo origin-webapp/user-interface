@@ -1,7 +1,6 @@
-// @import 'components/pokemon/pokemon-card/pokemon-card.scss';
-
 // variables can be declared and later reused
 $origin-light-green: #5df384;
+$origin-light-blue: #5dcbf3;
 $revature-orange-light: #f3a55d;
 $revature-orange: #f26925;
 $drew-orange: #f3a55d;
@@ -214,6 +213,10 @@ li > a.rev-btn-tab {
   @include lg { 
     max-width: 900px;
   }
+}
+
+.card-header {
+  @include origin-gradient;
 }
 
 

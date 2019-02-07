@@ -16,7 +16,7 @@ const prod = {
   awsRegion:          'us-east-1',
   cognitoClientId:    '',
   cognitoUserPoolId:  '',
-  originContext:         ''
+  originContext:         'http://origin.us-east-1.elasticbeanstalk.com'
 };
 
 console.log(process.env.NODE_ENV);
