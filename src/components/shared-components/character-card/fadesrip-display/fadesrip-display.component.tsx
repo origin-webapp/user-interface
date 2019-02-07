@@ -10,6 +10,19 @@ interface IFadesripProps {
 
 export class FadesripDisplayComponent extends React.PureComponent<IFadesripProps> {
 
+  getStatAndBonus(stat: number) {
+    return (
+      <>
+        <div>
+          {stat}
+        </div>
+        <div>
+          +{Math.floor(stat * 3 / 10)}
+        </div>
+      </>
+    )
+  }
+
   public render() {
     const stats = this.props.stats;
     return (
@@ -17,51 +30,35 @@ export class FadesripDisplayComponent extends React.PureComponent<IFadesripProps
       <div id="fadesrip-container">
         <div className="flex-col">
           <GiMailedFist className="fadesrip-icon" />
-          <p>
-            {stats.fighting}
-          </p>
+          {this.getStatAndBonus(stats.fighting)}
         </div>
         <div className="flex-col">
           <GiRunningShoe className="fadesrip-icon" />
-          <p>
-            {stats.agility}
-          </p>
+          {this.getStatAndBonus(stats.agility)}
         </div>
         <div className="flex-col">
           <GiPocketBow className="fadesrip-icon" />
-          <p>
-            {stats.dexterity}
-          </p>
+          {this.getStatAndBonus(stats.dexterity)}
         </div>
         <div className="flex-col">
           <GiHeartBeats className="fadesrip-icon" />
-          <p>
-            {stats.endurance}
-          </p>
+          {this.getStatAndBonus(stats.endurance)}
         </div>
         <div className="flex-col">
           <GiWeightLiftingUp className="fadesrip-icon" />
-          <p>
-            {stats.strength}
-          </p>
+          {this.getStatAndBonus(stats.strength)}
         </div>
         <div className="flex-col">
           <GiJigsawPiece className="fadesrip-icon" />
-          <p>
-            {stats.reason}
-          </p>
+          {this.getStatAndBonus(stats.reason)}
         </div>
         <div className="flex-col">
           <GiPsychicWaves className="fadesrip-icon" />
-          <p>
-            {stats.intuition}
-          </p>
+          {this.getStatAndBonus(stats.intuition)}
         </div>
         <div className="flex-col">
           <GiSheikahEye className="fadesrip-icon" />
-          <p>
-            {stats.psyche}
-          </p>
+          {this.getStatAndBonus(stats.psyche)}
         </div>
       </div>
     );
