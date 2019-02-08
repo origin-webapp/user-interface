@@ -15,6 +15,7 @@ interface IFadesripProps {
 export class FadesripDisplayComponent extends React.PureComponent<IFadesripProps> {
 
   updateStat = (e) => {
+    e.preventDefault();
     const newStats = {
       ...this.props.stats,
       [e.target.name]: e.target.value

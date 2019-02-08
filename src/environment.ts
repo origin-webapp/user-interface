@@ -2,7 +2,7 @@ const dev = {
   awsRegion:          'us-east-1',
   cognitoClientId:    '',
   cognitoUserPoolId:  '',
-  originContext:      'http://localhost:5500'
+  originContext:      'http://Blakes-Desktop:5500'
 };
 
 const uat = {
