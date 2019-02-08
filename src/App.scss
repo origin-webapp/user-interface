@@ -368,14 +368,22 @@ body {
   width: 2em;
 }
 
+.fadesrip-input {
+  width: 2em;
+}
+
 .power-name {
   text-align: start;
 }
-.power-rank {
-  // text-align: start;
-}
+
 .power-mechanic {
   text-align: end;
+}
+
+.character-card-name-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 /*****************************
   Clicker

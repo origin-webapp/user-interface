@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ManageNavComponent } from './manage-nav/manage-nav.component';
 import { IManageComponentProps } from './manage.container';
 import CreateUserModal from './create-user-modal/create-user-modal.container';

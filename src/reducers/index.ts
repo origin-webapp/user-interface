@@ -31,10 +31,9 @@ export interface IManageUsersState {
 
 export interface IMyCharactersState {
   characters: Character[],
-  currentCharacterId: number
+  currentCharacterId: number,
+  isEditing: boolean
 }
-
-
 
 export interface IState {
   auth: IAuthState,

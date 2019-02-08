@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { CreateUserModal } from './create-user-modal.component';
 
-export interface ICreateUserModal extends RouteComponentProps<{group: string}>{
+export interface ICreateUserModal {
   toggleModal,
   createUser: ICreateUserState,
   saveUser,

@@ -2,10 +2,21 @@ import * as React from 'react';
 
 import { FadesripDisplayComponent } from './fadesrip-display/fadesrip-display.component';
 import { PowersDisplayComponent } from './powers-display/powers-display.component';
-import Character from 'src/model/character.model';
+import Character from '../../../model/character.model';
+
+import { FaUserEdit } from 'react-icons/fa'
+import { CharacterNavComponent } from './character-nav/character-nav.component';
+import { GiHamburger } from 'react-icons/gi';
+import { updateStats } from '../../../actions/my-characters/my-characters.actions';
+import CharacterStats from '../../../model/character-stats.model';
 
 export interface ICharacterCardComponentProps {
   character: Character,
+  editing? : {
+    isEditing: boolean,
+    toggleIsEditing: (isEditing: boolean) => void,
+    updateStats: (stats: CharacterStats) => void
+  }
 }
 
 export class CharacterCardComponent extends React.PureComponent<ICharacterCardComponentProps> {
@@ -13,27 +24,31 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
 
 
   public render() {
-    const character = this.props.character;
+    const { character, editing } = this.props; 
     return (
       <div id="character-card" className="card text-center">
-        <div className="card-header">
-          {character.name}
+        <div className="card-header character-card-name-bar">
+          <div>
+            <GiHamburger />
+          </div>
+          <div>
+            {character.name}
+          </div>
+          <div>
+            {
+              editing &&
+                <FaUserEdit onClick={() => editing.toggleIsEditing && editing.toggleIsEditing(!editing.isEditing)} />
+            }
+          </div>
         </div>
         <div className="card-header">
-          <ul className="nav nav-tabs card-header-tabs">
-            <li className="nav-item">
-              <a className="nav-link active" href="#">Character</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Abilities</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#" aria-disabled="true">About</a>
-            </li>
-          </ul>
+          <CharacterNavComponent />
         </div>
         <div className="card-body">
-          <FadesripDisplayComponent stats={character.stats} />
+          <FadesripDisplayComponent 
+            stats={character.stats} 
+            editing={ editing && {isEditing: editing.isEditing, updateStat: editing.updateStats}}
+          />
         </div>
         <div className="card-body">
           <PowersDisplayComponent powers={character.powers} />

@@ -3,10 +3,10 @@ import CharacterStats from "./character-stats.model";
 
 export default class Character {
 
-  public id: number;
-  public name: string;
-  public creator: string; // email of the person who this character belongs to
-  public stats: CharacterStats;
-  public powers: Power[];
+  id: number = 0;
+  name: string = '';
+  creator: string = ''; // email of the person who this character belongs to
+  stats: CharacterStats = new CharacterStats();
+  powers: Power[] = [];
 
 }

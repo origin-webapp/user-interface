@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Route } from 'react-router';
 import { connect } from "react-redux";
-import { IState } from "src/reducers";
 import LoginComponent from "../login/login.component";
+import { IState } from "../../reducers";
 
 
 const mapStateToProps = (state: IState) => ({ auth: state.auth });
@@ -19,7 +19,7 @@ export const ProtectedRoute = ({ component: Component, auth, allowedRoles, ...re
           return <Component {...props} />;
         } else {
           return (
-            <LoginComponent />
+            <LoginComponent {...props}/>
           );
         }
       }}

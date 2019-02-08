@@ -2,27 +2,27 @@ import Character from './character.model';
 
 export default class CharacterStats {
 
-  public id: number;
+  id: number = 0;
 
-  public fighting: number;
+  fighting = 0;
 
-  public agility: number;
+  agility = 0;
 
-  public dexterity: number;
+  dexterity = 0;
 
-  public endurance: number;
+  endurance = 0;
 
-  public strength: number;
+  strength = 0;
 
-  public reason: number;
+  reason = 0;
 
-  public intuition: number;
+  intuition = 0;
 
-  public psyche: number;
+  psyche = 0;
 
-  public character?: Character;
+  character?: Character;
 
-  public characterId: number;
+  characterId = 0;
 
   // constructor(id = 0, name = '', rank = 0, mechanic?: PowerMechanic) {
   //   super();

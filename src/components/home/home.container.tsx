@@ -1,6 +1,6 @@
 import { IState } from "../../reducers";
 import { connect } from "react-redux";
-import { refreshMyCharactersList } from "src/actions/my-characters/my-characters.actions";
+import { refreshMyCharactersList, toggleIsEditing, updateStats } from "../../actions/my-characters/my-characters.actions";
 import { HomeComponent } from "./home.component";
 
 
@@ -9,7 +9,9 @@ const mapStateToProps = (state: IState) => ({
 })
 
 const mapDispatchToProps = {
-  refreshMyCharactersList
+  refreshMyCharactersList,
+  toggleIsEditing,
+  updateStats
 }
 
 export const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
