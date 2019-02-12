@@ -1,8 +1,38 @@
 import { IMyCharactersState } from '.';
 import { myCharactersTypes } from '../actions/my-characters/my-characters.actions';
+import Character from '../model/character.model';
 
 const initialState: IMyCharactersState = {
-  characters: [],
+  characters: [{
+    creator: '',
+    id: 1,
+    name: 'Switch',
+    powers: [{
+      id: 1,
+      mechanic: {
+        costScalesWithMaxAbility: false,
+        description: 'does stuff',
+        healthCostMultiplier: .25,
+        id: 1,
+        name: 'skillful strike',
+        wellCostMultiplier: 1.0
+      },
+      name: 'strike skill',
+      rank: 80
+    }],
+    stats: {
+      agility: 50,
+      characterId: 1,
+      dexterity: 40,
+      endurance: 40,
+      fighting: 40,
+      id: 1,
+      intuition: 15,
+      psyche: 20,
+      reason: 15,
+      strength: 40
+    }
+  }],
   currentCharacterId: 0,
   isEditing: false
 }

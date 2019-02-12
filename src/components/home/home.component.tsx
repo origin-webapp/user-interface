@@ -16,7 +16,7 @@ export interface IHomeProps {
 export class HomeComponent extends React.Component<IHomeProps> {
 
   componentDidMount() {
-    this.props.refreshMyCharactersList('btkruppa513@gmail.com');
+    this.props.refreshMyCharactersList('drummer90@sbcglobal.net');
   }
 
   public render() {

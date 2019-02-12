@@ -21,8 +21,6 @@ export interface ICharacterCardComponentProps {
 
 export class CharacterCardComponent extends React.PureComponent<ICharacterCardComponentProps> {
 
-
-
   public render() {
     const { character, editing } = this.props; 
     return (
