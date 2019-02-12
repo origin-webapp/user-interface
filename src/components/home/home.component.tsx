@@ -6,18 +6,15 @@ import CharacterStats from '../../model/character-stats.model';
 
 
 export interface IHomeProps {
+  currentUsername: string,
   myCharacters: IMyCharactersState,
-  refreshMyCharactersList: (email: string) => void,
+  refreshMyCharactersList: (username: string) => void,
   toggleIsEditing: (isEditing: boolean) => void,
   updateStats: (stats: CharacterStats) => void
 }
 
 
 export class HomeComponent extends React.Component<IHomeProps> {
-
-  componentDidMount() {
-    this.props.refreshMyCharactersList('drummer90@sbcglobal.net');
-  }
 
   public render() {
     const {toggleIsEditing, updateStats} = this.props;

@@ -5,6 +5,7 @@ import { HomeComponent } from "./home.component";
 
 
 const mapStateToProps = (state: IState) => ({
+  currentUsername: state.auth.currentUser.username,
   myCharacters: state.myCharacters
 })
 

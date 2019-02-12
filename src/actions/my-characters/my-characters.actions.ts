@@ -8,9 +8,9 @@ export const myCharactersTypes = {
   UPDATE_STATS: 'MY_CHARACTERS_UPDATE_STATS'
 }
 
-export const refreshMyCharactersList = (myEmail: string) => async (dispatch) => {
+export const refreshMyCharactersList = (username: string) => async (dispatch) => {
   try {
-    const resp = await charactersClient.findByCreator(myEmail);
+    const resp = await charactersClient.findByCreator(username);
     dispatch({
       payload: {
         characters: resp.data

@@ -84,7 +84,7 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
 
         });
       } else {
-        this.props.history.push('/check-ins');
+        this.props.history.push('/home');
         this.props.setup();
       }
     } catch (err) {
@@ -104,10 +104,11 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
         this.state.newPassword,       // the new password
         // OPTIONAL, the required attributes
         {
-          email: this.state.username,
+          // username: this.state.username,
         }
       );
       this.props.setup();
+      this.props.history.push('/home');
     }
   }
 
