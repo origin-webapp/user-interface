@@ -5,7 +5,8 @@ import CharacterStats from "../../model/character-stats.model";
 export const myCharactersTypes = {
   SET_MY_CHARACTERS_LIST: 'SET_MY_CHARACTERS_LIST',
   TOGGLE_IS_EDITING: 'MY_CHARACTERS_TOGGLE_IS_EDITING',
-  UPDATE_STATS: 'MY_CHARACTERS_UPDATE_STATS'
+  UPDATE_STATS: 'MY_CHARACTERS_UPDATE_STATS',
+  SET_CURRENT_CHARACTER_ID: 'SET_CURRENT_CHARACTER_ID'
 }
 
 export const refreshMyCharactersList = (username: string) => async (dispatch) => {
@@ -23,6 +24,14 @@ export const refreshMyCharactersList = (username: string) => async (dispatch) =>
 
 }
 
+export const setCurrentCharacterId = (characterId: number) => {
+  return {
+    payload: {
+      characterId
+    },
+    type: myCharactersTypes.SET_CURRENT_CHARACTER_ID
+  }
+}
 
 export const toggleIsEditing = (isEditing: boolean) => {
   return {

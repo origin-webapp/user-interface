@@ -24,7 +24,7 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
   public render() {
     const { character, editing } = this.props; 
     return (
-      <div id="character-card" className="card text-center">
+      <div id="character-card" style={{width: '75rem'}}>
         <div className="card-header character-card-name-bar">
           <div>
             <GiHamburger />
