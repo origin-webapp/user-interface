@@ -1,10 +1,16 @@
 import * as React from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
 import { Power } from '../../../../model/power.model';
 import { PowersDisplayRowComponent } from './powers-display-row.component';
 
 
 interface IPowerDisplayProps {
-  powers: Power[]
+  powers: Power[],
+  editing?: {
+    isEditing: boolean,
+    addPower: (power: Power) => void,
+    updatePower: (power: Partial<Power>) => void
+  }
 }
 
 export class PowersDisplayComponent extends React.Component<IPowerDisplayProps, any> {
@@ -15,17 +21,21 @@ export class PowersDisplayComponent extends React.Component<IPowerDisplayProps, 
 
   public render() {
     const highestPowerRank = this.props.powers.reduce((acc, cur) => {
-      return cur.rank > acc 
-                ? cur.rank
-                : acc
+      return cur.rank > acc
+        ? cur.rank
+        : acc
     }, 0)
+    const {editing} = this.props;
     return (
       <table className="table">
         <thead>
           <tr>
             <th className="power-name">Power</th>
             <th className="power-rank">Rank</th>
-            <th className="power-mechanic">Mechanic</th>
+            <th className="power-mechanic">
+              Mechanic
+              {editing && editing.isEditing && <FaPlusCircle />}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +47,7 @@ export class PowersDisplayComponent extends React.Component<IPowerDisplayProps, 
             )
           }
         </tbody>
+
       </table>
     );
   }

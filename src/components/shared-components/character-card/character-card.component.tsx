@@ -9,22 +9,25 @@ import { CharacterNavComponent } from './character-nav/character-nav.component';
 import { GiHamburger } from 'react-icons/gi';
 import { updateStats } from '../../../actions/my-characters/my-characters.actions';
 import CharacterStats from '../../../model/character-stats.model';
+import { Power } from '../../../model/power.model';
 
 export interface ICharacterCardComponentProps {
   character: Character,
-  editing? : {
+  editing?: {
     isEditing: boolean,
     toggleIsEditing: (isEditing: boolean) => void,
-    updateStats: (stats: CharacterStats) => void
+    updateStats: (stats: CharacterStats) => void,
+    addPower: (power: Power) => void,
+    updatePower: (power: Partial<Power>) => void
   }
 }
 
 export class CharacterCardComponent extends React.PureComponent<ICharacterCardComponentProps> {
 
   public render() {
-    const { character, editing } = this.props; 
+    const { character, editing } = this.props;
     return (
-      <div id="character-card" style={{width: '75rem'}}>
+      <div id="character-card" style={{ width: '75rem' }}>
         <div className="card-header character-card-name-bar">
           <div>
             <GiHamburger />
@@ -35,7 +38,7 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
           <div>
             {
               editing &&
-                <FaUserEdit onClick={() => editing.toggleIsEditing && editing.toggleIsEditing(!editing.isEditing)} />
+              <FaUserEdit onClick={() => editing.toggleIsEditing && editing.toggleIsEditing(!editing.isEditing)} />
             }
           </div>
         </div>
@@ -43,13 +46,13 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
           <CharacterNavComponent />
         </div>
         <div className="card-body">
-          <FadesripDisplayComponent 
-            stats={character.stats} 
-            editing={ editing && {isEditing: editing.isEditing, updateStat: editing.updateStats}}
+          <FadesripDisplayComponent
+            stats={character.stats}
+            editing={editing && { isEditing: editing.isEditing, updateStat: editing.updateStats }}
           />
         </div>
         <div className="card-body">
-          <PowersDisplayComponent powers={character.powers} />
+          <PowersDisplayComponent powers={character.powers} editing={this.props.editing} />
         </div>
       </div>
     );
