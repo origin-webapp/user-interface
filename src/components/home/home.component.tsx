@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { CharacterCardComponent } from '../shared-components/character-card/character-card.component';
-import { IMyCharactersState } from '../../reducers';
-import { updateStats, setCurrentCharacterId } from '../../actions/my-characters/my-characters.actions';
 import CharacterStats from '../../model/character-stats.model';
+import { IMyCharactersState } from '../../reducers';
 import { CharacterListCardComponent } from '../shared-components/char-list-card';
-import Character from '../../model/character.model';
+import { CharacterCardComponent } from '../shared-components/character-card/character-card.component';
+import { Power } from '../../model/power.model';
 
 
 export interface IHomeProps {
@@ -13,7 +12,10 @@ export interface IHomeProps {
   refreshMyCharactersList: (username: string) => void,
   toggleIsEditing: (isEditing: boolean) => void,
   updateStats: (stats: CharacterStats) => void,
-  setCurrentCharacterId: (characterId: number) => void
+  setCurrentCharacterId: (characterId: number) => void,
+  addPower: (power: Power) => void,
+  updatePower: (power: Partial<Power>) => void,
+  deletePower: (powerId: number) => void
 }
 
 
@@ -24,7 +26,7 @@ export class HomeComponent extends React.Component<IHomeProps> {
   }
 
   public render() {
-    const { toggleIsEditing, updateStats } = this.props;
+    const { toggleIsEditing, updateStats, addPower, updatePower, deletePower } = this.props;
     const characterList = this.props.myCharacters;
     const isEditing = this.props.myCharacters.isEditing;
     const setCharacter = this.props.setCurrentCharacterId;
@@ -32,11 +34,11 @@ export class HomeComponent extends React.Component<IHomeProps> {
     console.log(currentCharacter);
     if (currentCharacter) {
       return (
-        <div className="card-columns d-flex justify-content-center">
+        <div id="home-container" className="card-columns d-flex justify-content-center">
           <CharacterListCardComponent myCharacters={characterList} setCurrentCharacterId={setCharacter} />
           <CharacterCardComponent
             character={currentCharacter}
-            editing={{ isEditing, toggleIsEditing, updateStats }} />
+            editing={{ isEditing, toggleIsEditing, updateStats, addPower, updatePower, deletePower }} />
         </div>
       );
     } else {

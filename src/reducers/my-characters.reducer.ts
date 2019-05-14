@@ -1,6 +1,7 @@
 import { IMyCharactersState } from '.';
 import { myCharactersTypes } from '../actions/my-characters/my-characters.actions';
 import Character from '../model/character.model';
+import { characterTypes } from '../actions/characters/characters.actions';
 
 const initialState: IMyCharactersState = {
   characters: [{
@@ -9,6 +10,7 @@ const initialState: IMyCharactersState = {
     name: 'Swash',
     powers: [{
       id: 1,
+      characterId: 1,
       mechanic: {
         costScalesWithMaxAbility: false,
         description: 'does stuff',
@@ -47,6 +49,7 @@ const initialState: IMyCharactersState = {
         name: 'skillful strike',
         wellCostMultiplier: 1.0
       },
+      characterId: 2,
       name: 'strike skill',
       rank: 80
     }],
@@ -82,7 +85,7 @@ export const myCharactersReducer = (state = initialState, action: any): IMyChara
         ...state,
         isEditing: action.payload.isEditing,
       }
-    case myCharactersTypes.UPDATE_STATS: {
+    case characterTypes.UPDATE_STATS: {
       console.log(action.payload);
       return {
         ...state,
@@ -102,6 +105,34 @@ export const myCharactersReducer = (state = initialState, action: any): IMyChara
       return {
         ...state,
         currentCharacterId: action.payload.characterId
+      }
+    }
+    case characterTypes.SAVE_POWER: {
+      const power = action.payload.power;
+      return {
+        ...state,
+        characters: state.characters.map(character => {
+          if (character.id === power.characterId) {
+            return {
+              ...character,
+              powers: [...character.powers, power]
+            }
+          } else { 
+            return character;
+          }
+        })
+      }
+    }
+    case characterTypes.DELETE_POWER: {
+      const powerId = action.payload.powerId;
+      return {
+        ...state,
+        characters: state.characters.map(character => {
+          return {
+            ...character,
+            powers: character.powers.filter(power => power.id !== powerId)
+          }
+        })
       }
     }
   }

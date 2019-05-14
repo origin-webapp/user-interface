@@ -1,12 +1,9 @@
 import { charactersClient } from "../../axios/origin-client/characters.client";
-import { charactersStatsClient } from "../../axios/origin-client/character-stats.client";
-import CharacterStats from "../../model/character-stats.model";
 
 export const myCharactersTypes = {
-  SET_MY_CHARACTERS_LIST: 'SET_MY_CHARACTERS_LIST',
-  TOGGLE_IS_EDITING: 'MY_CHARACTERS_TOGGLE_IS_EDITING',
-  UPDATE_STATS: 'MY_CHARACTERS_UPDATE_STATS',
-  SET_CURRENT_CHARACTER_ID: 'SET_CURRENT_CHARACTER_ID'
+  SET_MY_CHARACTERS_LIST: '[MY_CHARACTERS] SET_MY_CHARACTERS_LIST',
+  TOGGLE_IS_EDITING: '[MY_CHARACTERS] TOGGLE_IS_EDITING',
+  SET_CURRENT_CHARACTER_ID: '[MY_CHARACTERS] SET_CURRENT_CHARACTER_ID'
 }
 
 export const refreshMyCharactersList = (username: string) => async (dispatch) => {
@@ -42,16 +39,4 @@ export const toggleIsEditing = (isEditing: boolean) => {
   }
 }
 
-export const updateStats = (stats: CharacterStats) =>  async (dispatch) => {
-  try {
-    const res = await charactersStatsClient.update(stats);
-    dispatch({
-      payload: {
-        stats: res.data
-      },
-      type: myCharactersTypes.UPDATE_STATS
-    })
-  } catch (err) {
 
-  }
-}

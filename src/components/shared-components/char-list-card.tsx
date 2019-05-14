@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IMyCharactersState } from '../../reducers'
-import { setCurrentCharacterId } from '../../actions/my-characters/my-characters.actions';
+import { IMyCharactersState } from '../../reducers';
 
 interface IProps {
     myCharacters: IMyCharactersState,

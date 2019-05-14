@@ -10,5 +10,9 @@ export const powersClient = {
   },
   patch(power: Partial<Power>) {
     return originClient.patch<Character>(powersContext, power);
-  } 
+  },
+  delete(powerId: number) {
+    return originClient.delete(powersContext + `/${powerId}`);
+  }
+
 }

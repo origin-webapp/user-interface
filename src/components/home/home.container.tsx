@@ -1,8 +1,8 @@
-import { IState } from "../../reducers";
 import { connect } from "react-redux";
-import { refreshMyCharactersList, toggleIsEditing, updateStats, setCurrentCharacterId } from "../../actions/my-characters/my-characters.actions";
+import { addPower, updateStats, deletePower } from '../../actions/characters/characters.actions';
+import { refreshMyCharactersList, setCurrentCharacterId, toggleIsEditing } from "../../actions/my-characters/my-characters.actions";
+import { IState } from "../../reducers";
 import { HomeComponent } from "./home.component";
-import { stat } from "fs-extra";
 
 
 const mapStateToProps = (state: IState) => ({
@@ -14,7 +14,9 @@ const mapDispatchToProps = {
   refreshMyCharactersList,
   toggleIsEditing,
   updateStats,
-  setCurrentCharacterId
+  setCurrentCharacterId,
+  addPower,
+  deletePower
 }
 
 export const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
