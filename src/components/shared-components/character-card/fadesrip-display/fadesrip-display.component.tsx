@@ -8,7 +8,7 @@ interface IFadesripProps {
   stats: CharacterStats,
   editing?: {
     isEditing: boolean,
-    updateStat: (stats: CharacterStats) => void
+    updateStats: (stats: CharacterStats) => void
   }
 }
 
@@ -21,14 +21,14 @@ export class FadesripDisplayComponent extends React.PureComponent<IFadesripProps
       [e.target.name]: e.target.value
     }
     console.log(newStats);
-    this.props.editing && this.props.editing.updateStat(newStats)
+    this.props.editing && this.props.editing.updateStats(newStats)
   }
 
   getStatAndBonus(statName: string, statValue: number) {
     const editing = this.props.editing;
 
     if (editing && editing.isEditing) {
-      if (editing.updateStat) {
+      if (editing.updateStats) {
         return <>
           <input className="fadesrip-input"
             type="number"

@@ -124,7 +124,7 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
       <div className="centered shadow-lg p-3 mb-5 bg-white rounded top-lev-div">
         {!this.state.passwordNeedsReset &&
           <>
-            <h4 id="titleHead">Sign in to SMS</h4>
+            <h4 id="titleHead">Sign in to Origin Awakened Database</h4>
             <form id="login-form" onSubmit={this.submitLogin}>
               <input name="username" type="text" className="form-control txt-bx" placeholder="Username" onChange={this.updateUsername} value={this.state.username} />
 
@@ -156,6 +156,9 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
         }
         <div className="row resetDiv">
           <button id="forgot-pass-btn">Forgot Username or Password</button>
+        </div>
+        <div className="row resetDiv">
+          <button id="register-btn" /* onClick={this.registerUser} */>Register with System</button>
         </div>
       </div>
     );

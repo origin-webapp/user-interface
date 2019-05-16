@@ -2,7 +2,7 @@ const dev = {
   awsRegion:          'us-east-1',
   cognitoClientId:    '7i4fcjv6mv61reikl3fj3021cg',
   cognitoUserPoolId:  'us-east-1_1kAKJNA7n',
-  originContext:      'http://Blakes-Desktop:5500'
+  originContext:      'http://blakes-desktop:5500'
 };
 
 const uat = {
@@ -14,9 +14,15 @@ const uat = {
 
 const prod = {
   awsRegion:          'us-east-1',
+<<<<<<< HEAD
   cognitoClientId:    '1dt3bm63i51cbjqk83tj6aq79a',
   cognitoUserPoolId:  'us-east-1_ISfs3b8sf',
   originContext:         'http://origin.us-east-1.elasticbeanstalk.com'
+=======
+  cognitoClientId:    '',
+  cognitoUserPoolId:  '',
+  originContext:         'http://OriginApiProd.yruxtjdgwg.us-east-1.elasticbeanstalk.com'
+>>>>>>> feature-update-ui-bk
 };
 
 console.log(process.env.NODE_ENV);

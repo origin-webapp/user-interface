@@ -6,6 +6,8 @@ import { manageUsersReducer } from './manage-users.reducer';
 import { createUserReducer } from './create-user.reducer';
 import Character from '../model/character.model';
 import { myCharactersReducer } from './my-characters.reducer';
+import { PowerMechanic } from '../model/power-mechanic.model';
+import { powerMechanicsReducer } from './power-mechanics.reducer';
 
 export interface IAuthState {
   currentUser: ICognitoUser
@@ -35,12 +37,17 @@ export interface IMyCharactersState {
   isEditing: boolean
 }
 
+export interface IPowerMechanicsState {
+  powerMechanics: PowerMechanic[]
+}
+
 export interface IState {
   auth: IAuthState,
   clicker: IClickerState,
   createUser: ICreateUserState,
   manageUsers: IManageUsersState,
-  myCharacters: IMyCharactersState
+  myCharacters: IMyCharactersState,
+  powerMechanics: IPowerMechanicsState
 }
 
 export const state = combineReducers<IState>({
@@ -48,5 +55,6 @@ export const state = combineReducers<IState>({
   clicker: clickerReducer,
   createUser: createUserReducer,
   manageUsers: manageUsersReducer,
-  myCharacters: myCharactersReducer
+  myCharacters: myCharactersReducer,
+  powerMechanics: powerMechanicsReducer
 })
