@@ -14,15 +14,9 @@ const uat = {
 
 const prod = {
   awsRegion:          'us-east-1',
-<<<<<<< HEAD
-  cognitoClientId:    '1dt3bm63i51cbjqk83tj6aq79a',
-  cognitoUserPoolId:  'us-east-1_ISfs3b8sf',
-  originContext:         'http://origin.us-east-1.elasticbeanstalk.com'
-=======
   cognitoClientId:    '',
   cognitoUserPoolId:  '',
   originContext:         'http://OriginApiProd.yruxtjdgwg.us-east-1.elasticbeanstalk.com'
->>>>>>> feature-update-ui-bk
 };
 
 console.log(process.env.NODE_ENV);
