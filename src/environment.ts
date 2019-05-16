@@ -14,8 +14,8 @@ const uat = {
 
 const prod = {
   awsRegion:          'us-east-1',
-  cognitoClientId:    '',
-  cognitoUserPoolId:  '',
+  cognitoClientId:    '7i4fcjv6mv61reikl3fj3021cg',
+  cognitoUserPoolId:  'us-east-1_1kAKJNA7n',
   originContext:         'http://OriginApiProd.yruxtjdgwg.us-east-1.elasticbeanstalk.com'
 };
 
