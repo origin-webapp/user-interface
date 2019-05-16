@@ -16,11 +16,11 @@ export class CharacterListCardComponent extends React.PureComponent<IProps, any>
                 </div>
                 <div className="card-body">
                     <ul className="list-group"> {
-                        this.props.myCharacters.characters.map((item, key) => 
-                        <li>
+                        this.props.myCharacters.characters.map((character) => 
+                        <li key={'character-list' + character.id}>
                             <a className="card-link"
-                            onClick = {() => {console.log(`hi`); return this.props.setCurrentCharacterId(item.id)}}>
-                            {item.name}
+                            onClick = {() => {console.log(`hi`); return this.props.setCurrentCharacterId(character.id)}}>
+                            {character.name}
                             </a>
                         </li>)
                     } </ul>

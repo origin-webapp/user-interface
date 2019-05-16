@@ -1,9 +1,6 @@
 // variables can be declared and later reused
 $origin-light-green: #5df384;
 $origin-light-blue: #5dcbf3;
-$revature-orange-light: #f3a55d;
-$revature-orange: #f26925;
-$drew-orange: #f3a55d;
 $rounded-amount: 0.5em;
 
 // Small tablets and large smartphones (landscape view)
@@ -106,58 +103,58 @@ $screen-xl-min: 1200px;
   flex-shrink: 0;
 }
 
-.rev-btn:not(.dropdown), .rev-btn > button.dropdown-toggle {
-  background-color: $revature-orange-light !important;
-  border-color: $revature-orange-light !important;
+.origin-btn:not(.dropdown), .origin-btn > button.dropdown-toggle {
+  background-color: $origin-light-green !important;
+  border-color: $origin-light-green !important;
   color: black !important;
   &:hover {
     background-color: white;
-    border-color: $revature-orange-light;
-    color: $revature-orange-light;
+    border-color: $origin-light-green;
+    color: $origin-light-green;
   }
   &:active {
-    background-color: $revature-orange-light;
+    background-color: $origin-light-green;
     color: black;
-    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba($origin-light-green, 0.5) !important;
   }
   &:active, &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba($origin-light-green, 0.5) !important;
   } 
 
 }
 
-li > a.rev-btn-tab {
+li > a.origin-btn-tab {
   background-color: white;
-  border-color: $revature-orange-light;
+  border-color: $origin-light-green;
   color: black;
   &:hover {
     background-color: white;
-    border-color: $revature-orange-light;
-    color: $revature-orange-light;
+    border-color: $origin-light-green;
+    color: $origin-light-green;
   }
   &:active {
     color: black;
-    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5);
-    border-color: $revature-orange-light
+    box-shadow: 0 0 0 0.2rem rgba($origin-light-green, 0.5);
+    border-color: $origin-light-green
   }
   &:active, &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba($origin-light-green, 0.5);
   }
 }
 .rev-table-row:hover {
-  -webkit-box-shadow: inset 0px 0px 15px 5px $revature-orange-light;
-  -moz-box-shadow: inset 0px 0px 15px 5px $revature-orange-light;
-  box-shadow: inset 0px 0px 15px 5px $revature-orange-light;
+  -webkit-box-shadow: inset 0px 0px 15px 5px $origin-light-green;
+  -moz-box-shadow: inset 0px 0px 15px 5px $origin-light-green;
+  box-shadow: inset 0px 0px 15px 5px $origin-light-green;
   cursor: pointer;
 }
 
 
 .rev-background-color {
-  background-color: $revature-orange-light;
+  background-color: $origin-light-green;
 }
 
 .rev-color { 
-  color: $revature-orange;
+  color: $origin-light-green;
 }
 
 .responsive-modal-row {
@@ -177,21 +174,21 @@ li > a.rev-btn-tab {
 
 .dropdown-item { 
   &:active {
-    background-color: $revature-orange-light;
+    background-color: $origin-light-green;
   }
   &:focus {
-    outline-color: $revature-orange;
+    outline-color: $origin-light-green;
   }
   &:hover {
     cursor: pointer;
-    background-color: $revature-orange-light;
+    background-color: $origin-light-green;
   }
 }
 
 .form-control {
   &:focus {
-    border-color: $revature-orange-light;
-    box-shadow: 0 0 0.2rem 0.1rem $revature-orange-light;
+    border-color: $origin-light-green;
+    box-shadow: 0 0 0.2rem 0.1rem $origin-light-green;
   }
 }
 
@@ -288,7 +285,7 @@ body {
   &:hover {
     background-color: unset;
     border: unset;
-    color: $revature-orange;
+    color: $origin-light-green;
     cursor: pointer;
   }
   &:active {
@@ -297,7 +294,7 @@ body {
     color: black !important;
   }
   &:active, &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($revature-orange-light, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba($origin-light-green, 0.5);
   }
 }
 
@@ -524,7 +521,7 @@ body {
 .manage-user-nav-item {
   color: gray;
   &:hover {
-    color: $revature-orange;
+    color: $origin-light-green;
   }
 }
 
@@ -534,9 +531,9 @@ body {
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
   border-bottom: none;
-  color: $revature-orange-light;
+  color: $origin-light-green;
   &:hover {
-    color: $revature-orange-light;
+    color: $origin-light-green;
   }
   &:focus {
     border-color: #d6dce2;

@@ -7,12 +7,15 @@ import { Power } from '../../../model/power.model';
 import { CharacterNavComponent } from './character-nav/character-nav.component';
 import { FadesripDisplayComponent } from './fadesrip-display/fadesrip-display.component';
 import { PowersDisplayComponent } from './powers-display/powers-display.component';
+import { IPowerMechanicsState } from '../../../reducers';
+import { PowerMechanic } from '../../../model/power-mechanic.model';
 
 
 export interface ICharacterCardComponentProps {
   character: Character,
   editing?: {
     isEditing: boolean,
+    powerMechanics: PowerMechanic[],
     toggleIsEditing: (isEditing: boolean) => void,
     updateStats: (stats: CharacterStats) => void,
     addPower: (power: Power) => void,
@@ -50,7 +53,7 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
         <div className="card-body">
           <FadesripDisplayComponent
             stats={character.stats}
-            editing={editing}
+            editing={editing} 
           />
         </div>
         <div className="card-body">

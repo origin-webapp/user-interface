@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CharacterStats from '../../model/character-stats.model';
-import { IMyCharactersState } from '../../reducers';
+import { IMyCharactersState, IPowerMechanicsState } from '../../reducers';
 import { CharacterListCardComponent } from '../shared-components/char-list-card';
 import { CharacterCardComponent } from '../shared-components/character-card/character-card.component';
 import { Power } from '../../model/power.model';
@@ -9,6 +9,7 @@ import { Power } from '../../model/power.model';
 export interface IHomeProps {
   currentUsername: string,
   myCharacters: IMyCharactersState,
+  powerMechanics: IPowerMechanicsState
   refreshMyCharactersList: (username: string) => void,
   toggleIsEditing: (isEditing: boolean) => void,
   updateStats: (stats: CharacterStats) => void,
@@ -26,7 +27,7 @@ export class HomeComponent extends React.Component<IHomeProps> {
   }
 
   public render() {
-    const { toggleIsEditing, updateStats, addPower, updatePower, deletePower } = this.props;
+    const { toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics } = this.props;
     const characterList = this.props.myCharacters;
     const isEditing = this.props.myCharacters.isEditing;
     const setCharacter = this.props.setCurrentCharacterId;
@@ -38,7 +39,7 @@ export class HomeComponent extends React.Component<IHomeProps> {
           <CharacterListCardComponent myCharacters={characterList} setCurrentCharacterId={setCharacter} />
           <CharacterCardComponent
             character={currentCharacter}
-            editing={{ isEditing, toggleIsEditing, updateStats, addPower, updatePower, deletePower }} />
+            editing={{ isEditing, toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics: powerMechanics.powerMechanics }} />
         </div>
       );
     } else {

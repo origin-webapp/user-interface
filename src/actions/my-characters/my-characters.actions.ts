@@ -1,4 +1,5 @@
 import { charactersClient } from "../../axios/origin-client/characters.client";
+import { loadAllPowerMechanics } from "../power-mechanics/power-mechanics.actions";
 
 export const myCharactersTypes = {
   SET_MY_CHARACTERS_LIST: '[MY_CHARACTERS] SET_MY_CHARACTERS_LIST',
@@ -30,13 +31,14 @@ export const setCurrentCharacterId = (characterId: number) => {
   }
 }
 
-export const toggleIsEditing = (isEditing: boolean) => {
-  return {
+export const toggleIsEditing = (isEditing: boolean) => dispatch => {
+  loadAllPowerMechanics()(dispatch);
+  dispatch({
     payload: {
       isEditing
     },
     type: myCharactersTypes.TOGGLE_IS_EDITING
-  }
+  })
 }
 
 

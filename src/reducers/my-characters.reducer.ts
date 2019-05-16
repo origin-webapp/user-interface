@@ -100,6 +100,28 @@ export const myCharactersReducer = (state = initialState, action: any): IMyChara
         })
       }
     }
+    case characterTypes.UPDATE_POWER: {
+      const updatedPower = action.payload.power;
+      return {
+        ...state,
+        characters: state.characters.map(character => {
+          if (character.id === updatedPower.characterId) {
+            return {
+              ...character,
+              powers: character.powers.map(power => {
+                if(power.id !== updatedPower.id) {
+                  return power;
+                } else {
+                  return updatedPower;
+                }
+              })
+            }
+          } else { 
+            return character;
+          }
+        })
+      }
+    }
     case myCharactersTypes.SET_CURRENT_CHARACTER_ID: {
       console.log(action.payload);
       return {

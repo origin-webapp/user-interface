@@ -6,6 +6,7 @@ import { Power } from "../../model/power.model";
 
 export const characterTypes = {
   UPDATE_STATS: '[CHARACTERS] UPDATE_STATS',
+  UPDATE_POWER: '[CHARACTERS] UPDATE_POWER',
   SAVE_POWER: '[CHARACTERS] SAVE_POWER',
   DELETE_POWER: '[CHARACTERS] DELETE_POWER'
 }
@@ -21,6 +22,20 @@ export const updateStats = (stats: CharacterStats) =>  async (dispatch) => {
     })
   } catch (err) {
     toast.error("Stats may not be successfully updated.");
+  }
+}
+
+export const updatePower = (power: Power) =>  async (dispatch) => {
+  try {
+    const res = await powersClient.patch(power);
+    dispatch({
+      payload: {
+        power: res.data
+      },
+      type: characterTypes.UPDATE_POWER
+    })
+  } catch (err) {
+    toast.error("Failed to update power");
   }
 }
 
