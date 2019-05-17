@@ -71,8 +71,8 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
             editing={editing}
           />
         </div>
-        <div className="card-body">
-        Powers:
+        <div className="card-body character-card-powers">
+          <div className="powers-label">Powers:</div>
           <PowersDisplayComponent characterId={character.id} powers={character.powers} editing={editing} />
         </div>
       </div>

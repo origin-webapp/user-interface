@@ -354,6 +354,16 @@ body {
   text-align: center;
 }
 
+.character-card-powers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.powers-label {
+  align-self: flex-start;
+}
+
 #character-card {
   width: 100%;
   @include sm {
