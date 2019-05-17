@@ -1,3 +1,4 @@
+
 // variables can be declared and later reused
 $origin-light-green: #5df384;
 $origin-light-blue: #5dcbf3;
@@ -70,6 +71,9 @@ $screen-xl-min: 1200px;
       @content;
   }
 }
+
+
+
 
 /*******************************************
   Positioning
@@ -262,7 +266,7 @@ body {
   width: 100%;
   align-items: center;
   margin:auto;
-  @include md {
+  @include lg {
     max-width: 80%
   }
 }
@@ -345,6 +349,11 @@ body {
   align-self: flex-start;
 }
 
+.character-name-input {
+  width: auto;
+  text-align: center;
+}
+
 #character-card {
   width: 100%;
   @include sm {
@@ -357,7 +366,10 @@ body {
 
   @include lg {
     width: 80%;
-  }
+  } 
+
+  & table input {display: block; padding: 0; margin: 0; border: 0; width: 100%;}
+  & td {margin: 0; padding: 0;}
 }
 
 #fadesrip-container {
@@ -379,6 +391,40 @@ body {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+}
+
+.power-body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+
+  & > * {
+    margin-bottom: 0.2em;
+  }
+
+  input {
+    width: unset;
+  }
+
+  .power-rank {
+    width: 5em;
+  }
+  
+  & input[type=number]::-webkit-inner-spin-button, 
+  & input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+  @include md {
+    flex-direction: row;
+
+    & > * {
+      margin-bottom: 0;
+    }
   }
 }
 

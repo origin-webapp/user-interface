@@ -1,9 +1,10 @@
 import * as React from 'react';
 import CharacterStats from '../../model/character-stats.model';
+import Character from '../../model/character.model';
+import { Power } from '../../model/power.model';
 import { IMyCharactersState, IPowerMechanicsState } from '../../reducers';
 import { CharacterListCardComponent } from '../shared-components/char-list-card';
 import { CharacterCardComponent } from '../shared-components/character-card/character-card.component';
-import { Power } from '../../model/power.model';
 
 
 export interface IHomeProps {
@@ -16,7 +17,8 @@ export interface IHomeProps {
   setCurrentCharacterId: (characterId: number) => void,
   addPower: (power: Power) => void,
   updatePower: (power: Partial<Power>) => void,
-  deletePower: (powerId: number) => void
+  deletePower: (powerId: number) => void,
+  updateCharacter: (character: Partial<Character>) => void
 }
 
 
@@ -27,7 +29,7 @@ export class HomeComponent extends React.Component<IHomeProps> {
   }
 
   public render() {
-    const { toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics } = this.props;
+    const { toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics, updateCharacter } = this.props;
     const characterList = this.props.myCharacters;
     const isEditing = this.props.myCharacters.isEditing;
     const setCharacter = this.props.setCurrentCharacterId;
@@ -39,7 +41,7 @@ export class HomeComponent extends React.Component<IHomeProps> {
           <CharacterListCardComponent myCharacters={characterList} setCurrentCharacterId={setCharacter} />
           <CharacterCardComponent
             character={currentCharacter}
-            editing={{ isEditing, toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics: powerMechanics.powerMechanics }} />
+            editing={{ isEditing, toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics: powerMechanics.powerMechanics, updateCharacter }} />
         </div>
       );
     } else {

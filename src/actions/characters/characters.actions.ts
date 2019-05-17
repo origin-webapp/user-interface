@@ -3,12 +3,29 @@ import { charactersStatsClient } from "../../axios/origin-client/character-stats
 import { powersClient } from "../../axios/origin-client/powers.client";
 import CharacterStats from "../../model/character-stats.model";
 import { Power } from "../../model/power.model";
+import { charactersClient } from "../../axios/origin-client/characters.client";
+import Character from "../../model/character.model";
 
 export const characterTypes = {
   UPDATE_STATS: '[CHARACTERS] UPDATE_STATS',
   UPDATE_POWER: '[CHARACTERS] UPDATE_POWER',
+  UPDATE_CHARACTER: '[CHARACTERS} UPDATE_CHARACTER',
   SAVE_POWER: '[CHARACTERS] SAVE_POWER',
   DELETE_POWER: '[CHARACTERS] DELETE_POWER'
+}
+
+export const updateCharacter = (character: Partial<Character>) =>  async (dispatch) => {
+  try {
+    const res = await charactersClient.update(character);
+    dispatch({
+      payload: {
+        stats: res.data
+      },
+      type: characterTypes.UPDATE_CHARACTER
+    })
+  } catch (err) {
+    toast.error("Character may not be successfully updated.");
+  }
 }
 
 export const updateStats = (stats: CharacterStats) =>  async (dispatch) => {
@@ -25,7 +42,7 @@ export const updateStats = (stats: CharacterStats) =>  async (dispatch) => {
   }
 }
 
-export const updatePower = (power: Power) =>  async (dispatch) => {
+export const updatePower = (power: Partial<Power>) =>  async (dispatch) => {
   try {
     const res = await powersClient.patch(power);
     dispatch({

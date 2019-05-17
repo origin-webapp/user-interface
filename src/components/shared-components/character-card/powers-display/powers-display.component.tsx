@@ -38,42 +38,18 @@ export class PowersDisplayComponent extends React.Component<IPowerDisplayProps, 
         : acc
     }, 0)
     const { editing } = this.props;
-    return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th className="power-name">Power</th>
-            <th className="power-rank">Rank</th>
-            <th className="power-mechanic">
-              Mechanic
-              {
-                editing && editing.isEditing &&
-                <FaPlusCircle className="cursor-hover" style={{marginLeft: "0.4em"}} onClick={this.addPower} />
-              }
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            this.props.powers.map(power => {
-              if (editing && editing.isEditing) {
-                return <PowersDisplayRowEditingComponent power={power}
-                  highestPowerRank={highestPowerRank}
-                  editing={editing}
-                  key={'power-' + power.id} />
-              } else {
-                return <PowersDisplayRowComponent power={power}
-                  highestPowerRank={highestPowerRank}
-                  key={'power-' + power.id} />
-              }
-            }
-
-            )
-          }
-        </tbody>
-
-      </table>
-    );
+    return this.props.powers.map(power => {
+      if (editing && editing.isEditing) {
+        return <PowersDisplayRowEditingComponent power={power}
+          highestPowerRank={highestPowerRank}
+          editing={editing}
+          key={'power-' + power.id} />
+      } else {
+        return <PowersDisplayRowComponent power={power}
+          highestPowerRank={highestPowerRank}
+          key={'power-' + power.id} />
+      }
+    })
   }
 }
 

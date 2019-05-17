@@ -12,6 +12,8 @@ export const charactersClient = {
   },
   save(character: Character) {
     return originClient.post<Character>(charactersContext, character);
-  } 
-
+  },
+  update(character: Partial<Character>) {
+    return originClient.patch<Character>(charactersContext, character);
+  }
 }

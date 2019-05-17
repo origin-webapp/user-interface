@@ -28,14 +28,13 @@ export class PowersDisplayRowComponent extends React.Component<IProps, any> {
     const { power, highestPowerRank } = this.props;
     return (
       <>
-        <tr id={`power-${power.id}-row`}
-          onClick={this.toggleToolTip}>
-          <td className="power-name">
-            {power.name}
-          </td>
-          <td className="power-rank">{power.rank}</td>
-          <td className="power-mechanic">{power.mechanic && power.mechanic.name}</td>
-        </tr>
+        <div className="card" id={`power-${power.id}-row`} onClick={this.toggleToolTip}>
+          <div className="card-body power-body"> 
+            <p>{power.name}</p>
+            <p>{power.rank}</p>
+            <p>{power.mechanic && power.mechanic.name}</p>
+          </div>
+        </div>
         <Popover placement="top" isOpen={this.state.showToolTip} target={`power-${power.id}-row`} onClick={this.toggleToolTip}>
           <PopoverHeader>{power.name}</PopoverHeader>
           <PopoverBody>

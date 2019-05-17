@@ -100,6 +100,17 @@ export const myCharactersReducer = (state = initialState, action: any): IMyChara
         })
       }
     }
+    case characterTypes.UPDATE_CHARACTER: {
+      return {
+        ...state,
+        characters: state.characters.map(character => {
+          if (character.stats.id === action.payload.id) {
+            return action.payload
+          }
+          return character;
+        })
+      }
+    }
     case characterTypes.UPDATE_POWER: {
       const updatedPower = action.payload.power;
       return {

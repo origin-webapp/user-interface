@@ -6,6 +6,9 @@ import DropdownToggle from 'reactstrap/lib/DropdownToggle';
 import DropdownMenu from 'reactstrap/lib/DropdownMenu';
 import DropdownItem from 'reactstrap/lib/DropdownItem';
 import { PowerMechanic } from '../../../../../model/power-mechanic.model';
+import Row from 'reactstrap/lib/Row';
+import Col from 'reactstrap/lib/Col';
+import Input from 'reactstrap/lib/Input';
 
 interface IProps {
   power: Power,
@@ -42,35 +45,30 @@ export const PowersDisplayRowEditingComponent: React.FunctionComponent<IProps> =
     props.editing && props.editing.updatePower(updatedPower);
   }
 
-  
+
   return (
     <>
-      <tr id={`power-${power.id}-row`}
-        onClick={() => setShowToolTip(!showToolTip)}>
-        <td className="power-name">
-          <FaTrash className="cursor-hover" 
-            style={{marginRight: "0.4em"}}
-            onClick={() => editing.deletePower(power.id)} />
-          <input type="text" name="name" defaultValue={power.name} onBlur={updatePower} />
-        </td>
-        <td className="power-rank">
-          <input type="number" name="rank" defaultValue={'' + power.rank} onBlur={updatePower} />
-        </td>
-        <td className="power-mechanic">
+      <div className="card" id={`power-${power.id}-row`}>
+        <div className="card-body power-body">
+          <Input type="text" name="name" defaultValue={power.name} onBlur={updatePower} />
+          <Input type="number" className="power-rank" name="rank" defaultValue={'' + power.rank} onBlur={updatePower} />
           <Dropdown isOpen={showPowerMechanicDropdown} toggle={() => setShowPowerMechanicDropdown(!showPowerMechanicDropdown)}>
             <DropdownToggle caret className="btn btn-light">
               {power.mechanic && power.mechanic.name || 'None Selected'}
             </DropdownToggle>
             <DropdownMenu>
               {
-                editing.powerMechanics.map(mechanic => 
+                editing.powerMechanics.map(mechanic =>
                   <DropdownItem key={'mechanic-' + mechanic.id} onClick={() => updatePowersMechanic(mechanic)} >{mechanic.name}</DropdownItem>
                 )
               }
             </DropdownMenu>
           </Dropdown>
-        </td>
-      </tr>
+          <FaTrash className="cursor-hover"
+            style={{ marginRight: "0.4em" }}
+            onClick={() => editing.deletePower(power.id)} />
+        </div>
+      </div>
     </>
   );
 }
