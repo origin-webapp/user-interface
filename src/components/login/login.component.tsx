@@ -7,6 +7,8 @@ import { setup } from '../../actions/auth/auth.actions';
 
 import { Auth } from 'aws-amplify';
 import { RouteComponentProps } from 'react-router';
+import Button from 'reactstrap/lib/Button';
+import { Link } from 'react-router-dom';
 
 interface IComponentState {
   cogUser: any,
@@ -129,7 +131,7 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
               <input name="username" type="text" className="form-control txt-bx" placeholder="Username" onChange={this.updateUsername} value={this.state.username} />
 
               <input name="password" type="password" className="form-control txt-bx" id="login-pass" placeholder="Password" onChange={this.updatePassword} value={this.state.password}/>
-              <button className="btn rev-btn">Login</button>
+              <Button className="origin-btn-blue">Login</Button>
 
             </form>
 
@@ -145,7 +147,7 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
               <input  type="text" className="form-control txt-bx" placeholder="New Password" onChange={this.updateNewPassword} value={this.state.newPassword} />
 
               <input id="login-pass" type="password" className="form-control txt-bx" placeholder="Confirm Password" onChange={this.updateConfirmationPassword} value={this.state.confirmationPassword} />
-              <button className="btn rev-btn">Reset</button>
+              <Button className="origin-btn-blue">Reset</Button>
 
             </form>
           </>
@@ -158,7 +160,9 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
           <button id="forgot-pass-btn">Forgot Username or Password</button>
         </div>
         <div className="row resetDiv">
-          <button id="register-btn" /* onClick={this.registerUser} */>Register with System</button>
+          <Link to="/register">
+            <button id="register-btn">Register with System</button>
+            </Link>
         </div>
       </div>
     );

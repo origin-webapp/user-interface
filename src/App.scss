@@ -2,6 +2,9 @@
 // variables can be declared and later reused
 $origin-light-green: #5df384;
 $origin-light-blue: #5dcbf3;
+$origin-red: #f3675d;
+$origin-dark-green: #348547;
+
 $rounded-amount: 0.5em;
 
 // Small tablets and large smartphones (landscape view)
@@ -18,11 +21,11 @@ $screen-xl-min: 1200px;
 
 // mixins are reusable styles that can be included in other places
 @mixin origin-gradient {
-  background: -webkit-linear-gradient(right, $origin-light-green, #acc5c9);
-  background: -webkit-linear-gradient(right, $origin-light-green, #8bdde7);
-  background: -moz-linear-gradient(right, $origin-light-green, #eaf1f1);
-  background: -o-linear-gradient(right, $origin-light-green, #e1e9eb);
-  background: linear-gradient(to left, $origin-light-green, #e1e7e7);
+  background: -webkit-linear-gradient(right, $origin-light-green, rgba($origin-light-blue, 0.15));
+  background: -webkit-linear-gradient(right, $origin-light-green, rgba($origin-light-blue, 0.15));
+  background: -moz-linear-gradient(right, $origin-light-green, rgba($origin-light-blue, 0.15));
+  background: -o-linear-gradient(right, $origin-light-green, rgba($origin-light-blue, 0.15));
+  background: linear-gradient(to left, $origin-light-green, rgba($origin-light-blue, 0.15));
 }
 
 @mixin flex-col {
@@ -72,8 +75,18 @@ $screen-xl-min: 1200px;
   }
 }
 
-
-
+/*******************************************
+  Global
+*******************************************/
+a {
+  text-decoration: none;
+  color: black;
+  // color: $origin-dark-green;
+  &:hover {
+    text-decoration: none;
+    color: $origin-light-blue;
+  }
+}
 
 /*******************************************
   Positioning
@@ -86,6 +99,7 @@ $screen-xl-min: 1200px;
 ********************************************/
 .cursor-hover:hover {
   cursor: pointer;
+  fill: $origin-light-blue;
 }
 
 .no-link:hover {
@@ -105,6 +119,46 @@ $screen-xl-min: 1200px;
 .flex-package {
   display:    flex;
   flex-shrink: 0;
+}
+
+.origin-btn-red:not(.dropdown), .origin-btn > button.dropdown-toggle {
+  background-color: $origin-red !important;
+  border-color: $origin-red !important;
+  color: black !important;
+  &:hover {
+    background-color: white;
+    border-color: $origin-red;
+    color: $origin-red;
+  }
+  &:active {
+    background-color: $origin-red;
+    color: black;
+    box-shadow: 0 0 0 0.2rem rgba($origin-red, 0.5) !important;
+  }
+  &:active, &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($origin-red, 0.5) !important;
+  } 
+
+}
+
+.origin-btn-blue:not(.dropdown), .origin-btn > button.dropdown-toggle {
+  background-color: $origin-light-blue !important;
+  border-color: $origin-light-blue !important;
+  color: black !important;
+  &:hover {
+    background-color: white;
+    border-color: $origin-light-blue;
+    color: $origin-light-blue;
+  }
+  &:active {
+    background-color: $origin-light-blue;
+    color: black;
+    box-shadow: 0 0 0 0.2rem rgba($origin-light-blue, 0.5) !important;
+  }
+  &:active, &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($origin-light-blue, 0.5) !important;
+  } 
+
 }
 
 .origin-btn:not(.dropdown), .origin-btn > button.dropdown-toggle {
@@ -145,21 +199,13 @@ li > a.origin-btn-tab {
     box-shadow: 0 0 0 0.2rem rgba($origin-light-green, 0.5);
   }
 }
-.rev-table-row:hover {
+.origin-table-row:hover {
   -webkit-box-shadow: inset 0px 0px 15px 5px $origin-light-green;
   -moz-box-shadow: inset 0px 0px 15px 5px $origin-light-green;
   box-shadow: inset 0px 0px 15px 5px $origin-light-green;
   cursor: pointer;
 }
 
-
-.rev-background-color {
-  background-color: $origin-light-green;
-}
-
-.rev-color { 
-  color: $origin-light-green;
-}
 
 .responsive-modal-row {
   display: flex;
@@ -302,10 +348,20 @@ body {
   }
 }
 
-.rev-logo {
-  width: auto;
-  height: 2em;
-  margin-right: 2em;
+.home-button {
+  color: $origin-dark-green;
+  path {
+    fill: $origin-dark-green;
+  }
+
+  .origin-logo {
+    width: auto;
+    height: 2em;
+  }
+
+  &:hover path {
+    fill: $origin-light-blue
+  }
 }
 
 .margin-nav {
@@ -339,6 +395,10 @@ body {
   cursor: pointer;
 }
 
+.navbar-light .navbar-nav .nav-link:hover { 
+  color: $origin-light-blue;
+}
+
 /*********************************
   Character Card
 *********************************/
@@ -346,7 +406,16 @@ body {
 #character-list-card {
   width: auto;
   margin-right: 1em;
-  align-self: flex-start;
+  align-self: flex-start; 
+
+  .list-group-item:hover {
+    box-shadow: inset 0px 11px 15px -10px $origin-light-green, inset 0px -11px 15px -10px $origin-light-green; 
+    cursor: pointer;
+  }
+
+  .card-body {
+    padding: 0;
+  }
 }
 
 .character-name-input {
@@ -377,9 +446,6 @@ body {
   @include lg {
     width: 80%;
   } 
-
-  & table input {display: block; padding: 0; margin: 0; border: 0; width: 100%;}
-  & td {margin: 0; padding: 0;}
 }
 
 #fadesrip-container {
@@ -423,8 +489,8 @@ body {
     width: 5em;
   }
   
-  & input[type=number]::-webkit-inner-spin-button, 
-  & input[type=number]::-webkit-outer-spin-button { 
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
     margin: 0; 
   }
@@ -436,6 +502,12 @@ body {
       margin-bottom: 0;
     }
   }
+}
+
+#edit-power-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around
 }
 
 .power-name {
@@ -478,8 +550,9 @@ body {
 @media (min-width: 1200px) { 
   .top-lev-div{
     margin-top:50px;
-    zoom: 1.5;
-    -moz-transform: scale(1.5);
+    // zoom: 1.5;
+    // transform: scale(1.2);
+    // -moz-transform: scale(1.2);
   } 
 }
 
@@ -487,6 +560,7 @@ body {
   .top-lev-div{
     margin-top:50px;
     zoom: 1.0;
+    transform: scale(1.0);
     -moz-transform: scale(1.0);
   } 
 
@@ -542,14 +616,20 @@ body {
   padding-bottom: 10px;
 }
 
-#forgot-pass-btn{
-  color: blue;
+#forgot-pass-btn {
+  color: $origin-dark-green;
   margin-top: 0.5em;
   border: none;
   text-align: center;
   background-color: transparent;
-  -webkit-transition: 1s;
-          transition: 1s;
+}
+
+#register-btn {
+  color: $origin-dark-green;
+  margin-top: 0.5em;
+  border: none;
+  text-align: center;
+  background-color: transparent;
 }
 
 #invalidCredHead {

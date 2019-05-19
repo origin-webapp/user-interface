@@ -15,5 +15,8 @@ export const charactersClient = {
   },
   update(character: Partial<Character>) {
     return originClient.patch<Character>(charactersContext, character);
+  },
+  delete(characterId: number) {
+    return originClient.delete(charactersContext + `/${characterId}`);
   }
 }

@@ -9,6 +9,7 @@ import { CharacterNavComponent } from './character-nav/character-nav.component';
 import { FadesripDisplayComponent } from './fadesrip-display/fadesrip-display.component';
 import { PowersDisplayComponent } from './powers-display/powers-display.component';
 import Input from 'reactstrap/lib/Input';
+import { deleteCharacter } from '../../../actions/characters/characters.actions';
 
 
 export interface ICharacterCardComponentProps {
@@ -21,7 +22,8 @@ export interface ICharacterCardComponentProps {
     addPower: (power: Power) => void,
     updatePower: (power: Partial<Power>) => void,
     deletePower: (powerId: number) => void,
-    updateCharacter: (character: Partial<Character>) => void
+    updateCharacter: (character: Partial<Character>) => void,
+    deleteCharacter: (characterId: number) => void
   }
 }
 

@@ -5,26 +5,68 @@ import CharacterStats from "../../model/character-stats.model";
 import { Power } from "../../model/power.model";
 import { charactersClient } from "../../axios/origin-client/characters.client";
 import Character from "../../model/character.model";
+import { IState } from "../../reducers";
 
 export const characterTypes = {
   UPDATE_STATS: '[CHARACTERS] UPDATE_STATS',
   UPDATE_POWER: '[CHARACTERS] UPDATE_POWER',
   UPDATE_CHARACTER: '[CHARACTERS} UPDATE_CHARACTER',
   SAVE_POWER: '[CHARACTERS] SAVE_POWER',
-  DELETE_POWER: '[CHARACTERS] DELETE_POWER'
+  SAVE_CHARACTER: '[CHARACTERS] SAVE_CHARACTER',
+  DELETE_POWER: '[CHARACTERS] DELETE_POWER',
+  DELETE_CHARACTER: '[CHARACTERS] DELETE CHARACTER'
 }
+
+export const createCharacter = (character?: Partial<Character>) =>  async (dispatch, getState: () => IState) => {
+  const currentUsername = getState().auth.currentUser.username;
+  const defaultChar = new Character(0, 'New Character', currentUsername, new CharacterStats(), []);
+  let isCurrentUsers = true;
+  if (character && character.creator && character.creator !== currentUsername) {
+    isCurrentUsers = false;
+  }
+  try {
+    const res = await charactersClient.save({
+      ...defaultChar,
+      ...character,
+      id: 0,
+    });
+    dispatch({
+      payload: {
+        character: res.data,
+        isCurrentUsers
+      },
+      type: characterTypes.SAVE_CHARACTER
+    })
+  } catch (err) {
+    toast.error("Failed to create a new character");
+  }
+} 
 
 export const updateCharacter = (character: Partial<Character>) =>  async (dispatch) => {
   try {
     const res = await charactersClient.update(character);
     dispatch({
       payload: {
-        stats: res.data
+        character: res.data
       },
       type: characterTypes.UPDATE_CHARACTER
     })
   } catch (err) {
     toast.error("Character may not be successfully updated.");
+  }
+}
+
+export const deleteCharacter = (characterId: number) =>  async (dispatch) => {
+  try {
+    const res = await charactersClient.delete(characterId);
+    dispatch({
+      payload: {
+        id: characterId
+      },
+      type: characterTypes.DELETE_CHARACTER
+    })
+  } catch (err) {
+    toast.error("Character may not be successfully deleted.");
   }
 }
 

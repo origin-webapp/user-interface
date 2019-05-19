@@ -5,6 +5,7 @@ import { Power } from '../../model/power.model';
 import { IMyCharactersState, IPowerMechanicsState } from '../../reducers';
 import { CharacterListCardComponent } from '../shared-components/char-list-card';
 import { CharacterCardComponent } from '../shared-components/character-card/character-card.component';
+import { deleteCharacter } from '../../actions/characters/characters.actions';
 
 
 export interface IHomeProps {
@@ -18,7 +19,9 @@ export interface IHomeProps {
   addPower: (power: Power) => void,
   updatePower: (power: Partial<Power>) => void,
   deletePower: (powerId: number) => void,
-  updateCharacter: (character: Partial<Character>) => void
+  updateCharacter: (character: Partial<Character>) => void,
+  createCharacter: (character?: Partial<Character>) => void,
+  deleteCharacter: (characterId: number) => void
 }
 
 
@@ -29,7 +32,7 @@ export class HomeComponent extends React.Component<IHomeProps> {
   }
 
   public render() {
-    const { toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics, updateCharacter } = this.props;
+    const { toggleIsEditing, updateStats, addPower, updatePower, deletePower, deleteCharacter, powerMechanics, updateCharacter, createCharacter } = this.props;
     const characterList = this.props.myCharacters;
     const isEditing = this.props.myCharacters.isEditing;
     const setCharacter = this.props.setCurrentCharacterId;
@@ -38,10 +41,15 @@ export class HomeComponent extends React.Component<IHomeProps> {
     if (currentCharacter) {
       return (
         <div id="home-container" className="card-columns d-flex justify-content-center">
-          <CharacterListCardComponent myCharacters={characterList} setCurrentCharacterId={setCharacter} />
+          <CharacterListCardComponent myCharacters={characterList}
+            setCurrentCharacterId={setCharacter}
+            createCharacter={createCharacter} />
           <CharacterCardComponent
             character={currentCharacter}
-            editing={{ isEditing, toggleIsEditing, updateStats, addPower, updatePower, deletePower, powerMechanics: powerMechanics.powerMechanics, updateCharacter }} />
+            editing={{
+              isEditing, toggleIsEditing, updateStats, addPower, updatePower, deletePower,
+              powerMechanics: powerMechanics.powerMechanics, updateCharacter, deleteCharacter
+            }} />
         </div>
       );
     } else {

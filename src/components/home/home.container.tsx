@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addPower, updateStats, deletePower, updatePower, updateCharacter } from '../../actions/characters/characters.actions';
+import { addPower, updateStats, deletePower, updatePower, updateCharacter, createCharacter, deleteCharacter } from '../../actions/characters/characters.actions';
 import { refreshMyCharactersList, setCurrentCharacterId, toggleIsEditing } from "../../actions/my-characters/my-characters.actions";
 import { IState } from "../../reducers";
 import { HomeComponent } from "./home.component";
@@ -19,7 +19,9 @@ const mapDispatchToProps = {
   addPower,
   updatePower,
   deletePower,
-  updateCharacter
+  updateCharacter,
+  createCharacter,
+  deleteCharacter
 }
 
 export const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
