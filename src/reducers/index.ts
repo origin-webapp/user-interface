@@ -6,6 +6,7 @@ import { manageUsersReducer } from './manage-users.reducer';
 import { createUserReducer } from './create-user.reducer';
 import Character from '../model/character.model';
 import { myCharactersReducer } from './my-characters.reducer';
+import { createCharacterReducer } from './create-character.reducer';
 
 export interface IAuthState {
   currentUser: ICognitoUser
@@ -25,6 +26,11 @@ export interface ICreateUserState {
   }
 }
 
+export interface ICreateCharacterState {
+  enabled: boolean,
+  newCharacter?: Character
+}
+
 export interface IManageUsersState {
   manageUsers: ICognitoUser[];
 }
@@ -40,7 +46,8 @@ export interface IState {
   clicker: IClickerState,
   createUser: ICreateUserState,
   manageUsers: IManageUsersState,
-  myCharacters: IMyCharactersState
+  myCharacters: IMyCharactersState,
+  createCharacter: ICreateCharacterState
 }
 
 export const state = combineReducers<IState>({
@@ -48,5 +55,6 @@ export const state = combineReducers<IState>({
   clicker: clickerReducer,
   createUser: createUserReducer,
   manageUsers: manageUsersReducer,
-  myCharacters: myCharactersReducer
+  myCharacters: myCharactersReducer,
+  createCharacter: createCharacterReducer
 })

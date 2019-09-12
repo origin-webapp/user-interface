@@ -15,7 +15,9 @@ interface IComponentState {
   confirmationPassword: string,
   newPassword: string,
   passwordNeedsReset,
-  incorrectUserPass
+  incorrectUserPass,
+  failToResetPassword,
+  passwordResetMismatch
 }
 
 interface IComponentProps extends IAuthState, RouteComponentProps<{}> {
@@ -34,6 +36,8 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
       password: '',
       passwordNeedsReset: false,
       username: '',
+      failToResetPassword: false,
+      passwordResetMismatch: false
     }
   }
 
@@ -95,20 +99,28 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
 
   public submitPasswordReset = async (e: any) => {
     e.preventDefault();
+    this.setState({failToResetPassword: false});
     if (this.state.newPassword === this.state.confirmationPassword) {
       // You need to get the new password and required attributes from the UI inputs
       // and then trigger the following function with a button click
       // For example, the email and phone_number are required attributes
-      await Auth.completeNewPassword(
-        this.state.cogUser,               // the Cognito User Object
-        this.state.newPassword,       // the new password
-        // OPTIONAL, the required attributes
-        {
-          // username: this.state.username,
-        }
-      );
-      this.props.setup();
-      this.props.history.push('/home');
+      this.setState({passwordResetMismatch: false});
+      try {
+        await Auth.completeNewPassword(
+          this.state.cogUser,               // the Cognito User Object
+          this.state.newPassword,       // the new password
+          // OPTIONAL, the required attributes
+          {
+            // username: this.state.username,
+          }
+        );
+        this.props.setup();
+        this.props.history.push('/home');
+      } catch(exception){
+        this.setState({failToResetPassword: true});
+      }
+    } else {
+      this.setState({passwordResetMismatch: true})
     }
   }
 
@@ -128,7 +140,7 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
             <form id="login-form" onSubmit={this.submitLogin}>
               <input name="username" type="text" className="form-control txt-bx" placeholder="Username" onChange={this.updateUsername} value={this.state.username} />
 
-              <input name="password" type="password" className="form-control txt-bx" id="login-pass" placeholder="Password" onChange={this.updatePassword} value={this.state.password}/>
+              <input name="password" type="password" className="form-control txt-bx" id="login-pass" placeholder="Password" onChange={this.updatePassword} value={this.state.password} />
               <button className="btn rev-btn">Login</button>
 
             </form>
@@ -142,12 +154,22 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
           <>
             <h4 id="titleHead">Reset Password</h4>
             <form id="login-form" onSubmit={this.submitPasswordReset}>
-              <input  type="text" className="form-control txt-bx" placeholder="New Password" onChange={this.updateNewPassword} value={this.state.newPassword} />
+              <input type="text" className="form-control txt-bx" placeholder="New Password" onChange={this.updateNewPassword} value={this.state.newPassword} />
 
               <input id="login-pass" type="password" className="form-control txt-bx" placeholder="Confirm Password" onChange={this.updateConfirmationPassword} value={this.state.confirmationPassword} />
               <button className="btn rev-btn">Reset</button>
 
             </form>
+            {this.state.failToResetPassword &&
+              <>
+                <h4>Could Not Reset Password</h4>
+              </>
+            }
+            {this.state.passwordResetMismatch &&
+              <>
+                <h6>Passwords Must Match</h6>
+              </>
+            }
           </>
           // <ResetFirstPasswordComponent
           //   cognitUser={this.props.cogUser}

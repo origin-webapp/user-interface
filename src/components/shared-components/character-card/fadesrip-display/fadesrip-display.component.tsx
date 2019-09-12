@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { GiMailedFist, GiPocketBow, GiRunningShoe, GiHeartBeats, GiWeightLiftingUp, GiJigsawPiece, GiSheikahEye, GiPsychicWaves } from 'react-icons/gi';
 import CharacterStats from '../../../../model/character-stats.model';
+//import { OverlayTrigger } from 'react-bootstrap';
 
 
 interface IFadesripProps {
@@ -51,13 +52,34 @@ export class FadesripDisplayComponent extends React.PureComponent<IFadesripProps
     </>
   }
 
+  renderTooltip = props => (
+    <div
+    {...props}
+    style={{
+      backgroundColor: 'rgba(0,0,0,0.85)',
+      padding: '2px 10px',
+      color: 'white',
+      borderRadius: 3,
+      ...props.style,
+    }}
+    >
+      Simple tooltip
+    </div>
+  )
+
   public render() {
     const stats = this.props.stats;
     return (
 
       <div id="fadesrip-container">
         <div className="flex-col">
-          <GiMailedFist className="fadesrip-icon" />
+          {/* <OverlayTrigger
+            placement="top" 
+            delay={{ show: 250, hide: 400 }} 
+            overlay={renderTooltip}
+            >
+            <GiMailedFist className="fadesrip-icon" />
+          </OverlayTrigger> */}
           {this.getStatAndBonus('fighting', stats.fighting)}
         </div>
         <div className="flex-col">

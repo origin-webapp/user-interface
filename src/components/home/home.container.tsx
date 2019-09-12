@@ -2,6 +2,7 @@ import { IState } from "../../reducers";
 import { connect } from "react-redux";
 import { refreshMyCharactersList, toggleIsEditing, updateStats } from "../../actions/my-characters/my-characters.actions";
 import { HomeComponent } from "./home.component";
+import * as createCharacterActions from '../../actions/create-character/create-character.actions';
 
 
 const mapStateToProps = (state: IState) => ({
@@ -12,7 +13,8 @@ const mapStateToProps = (state: IState) => ({
 const mapDispatchToProps = {
   refreshMyCharactersList,
   toggleIsEditing,
-  updateStats
+  updateStats,
+  toggleCreateCharacterModal: createCharacterActions.toggleModal
 }
 
 export const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
