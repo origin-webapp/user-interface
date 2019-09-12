@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { GiMailedFist, GiPocketBow, GiRunningShoe, GiHeartBeats, GiWeightLiftingUp, GiJigsawPiece, GiSheikahEye, GiPsychicWaves } from 'react-icons/gi';
 import CharacterStats from '../../../../model/character-stats.model';
-//import { OverlayTrigger } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 
 interface IFadesripProps {
@@ -52,20 +52,16 @@ export class FadesripDisplayComponent extends React.PureComponent<IFadesripProps
     </>
   }
 
-  renderTooltip = props => (
-    <div
-    {...props}
-    style={{
-      backgroundColor: 'rgba(0,0,0,0.85)',
-      padding: '2px 10px',
-      color: 'white',
-      borderRadius: 3,
-      ...props.style,
-    }}
-    >
-      Simple tooltip
-    </div>
-  )
+  showStr: boolean;
+
+  constructor(a, b) {
+    super(a, b);
+    this.showStr = false;
+  }
+
+  toggleStrTooltip() {
+    this.showStr=!this.showStr;
+  }
 
   public render() {
     const stats = this.props.stats;
@@ -73,17 +69,19 @@ export class FadesripDisplayComponent extends React.PureComponent<IFadesripProps
 
       <div id="fadesrip-container">
         <div className="flex-col">
-          {/* <OverlayTrigger
-            placement="top" 
-            delay={{ show: 250, hide: 400 }} 
-            overlay={renderTooltip}
-            >
+          <OverlayTrigger 
+            key="str"
+            overlay={() =>
+              <Tooltip id="strTooltip" placement="top">
+                My Tooltip
+              </Tooltip>
+            }>
             <GiMailedFist className="fadesrip-icon" />
-          </OverlayTrigger> */}
+            </OverlayTrigger>
           {this.getStatAndBonus('fighting', stats.fighting)}
         </div>
-        <div className="flex-col">
-          <GiRunningShoe className="fadesrip-icon" />
+        <div className="flex-col" title="agility">
+          <GiRunningShoe className="fadesrip-icon"/>
           {this.getStatAndBonus('agility', stats.agility)}
         </div>
         <div className="flex-col">
