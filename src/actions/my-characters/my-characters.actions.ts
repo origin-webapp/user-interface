@@ -1,11 +1,10 @@
 import { charactersClient } from "../../axios/origin-client/characters.client";
-import { charactersStatsClient } from "../../axios/origin-client/character-stats.client";
-import CharacterStats from "../../model/character-stats.model";
+import { loadAllPowerMechanics } from "../power-mechanics/power-mechanics.actions";
 
 export const myCharactersTypes = {
-  SET_MY_CHARACTERS_LIST: 'SET_MY_CHARACTERS_LIST',
-  TOGGLE_IS_EDITING: 'MY_CHARACTERS_TOGGLE_IS_EDITING',
-  UPDATE_STATS: 'MY_CHARACTERS_UPDATE_STATS'
+  SET_MY_CHARACTERS_LIST: '[MY_CHARACTERS] SET_MY_CHARACTERS_LIST',
+  TOGGLE_IS_EDITING: '[MY_CHARACTERS] TOGGLE_IS_EDITING',
+  SET_CURRENT_CHARACTER_ID: '[MY_CHARACTERS] SET_CURRENT_CHARACTER_ID'
 }
 
 export const refreshMyCharactersList = (username: string) => async (dispatch) => {
@@ -23,26 +22,23 @@ export const refreshMyCharactersList = (username: string) => async (dispatch) =>
 
 }
 
-
-export const toggleIsEditing = (isEditing: boolean) => {
+export const setCurrentCharacterId = (characterId: number) => {
   return {
+    payload: {
+      characterId
+    },
+    type: myCharactersTypes.SET_CURRENT_CHARACTER_ID
+  }
+}
+
+export const toggleIsEditing = (isEditing: boolean) => dispatch => {
+  loadAllPowerMechanics()(dispatch);
+  dispatch({
     payload: {
       isEditing
     },
     type: myCharactersTypes.TOGGLE_IS_EDITING
-  }
+  })
 }
 
-export const updateStats = (stats: CharacterStats) =>  async (dispatch) => {
-  try {
-    const res = await charactersStatsClient.update(stats);
-    dispatch({
-      payload: {
-        stats: res.data
-      },
-      type: myCharactersTypes.UPDATE_STATS
-    })
-  } catch (err) {
 
-  }
-}

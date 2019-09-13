@@ -88,7 +88,7 @@ export class CreateCharacterModal extends React.Component<ICreateCharacterModal,
                 </InputGroupAddon>
                 <FadesripDisplayComponent
                   stats={createCharacter.newCharacter ? createCharacter.newCharacter.stats : new CharacterStats}
-                  editing={{ isEditing: true, updateStat: this.updateFadesRip  }}
+                  editing={{ isEditing: true, updateStats: this.updateFadesRip  }}
                 />
 
               </InputGroup>

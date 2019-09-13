@@ -6,6 +6,7 @@ import { setup, logout } from '../../actions/auth/auth.actions';
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router";
 // import OriginLogo from '../../assets/jax-eye-2.png';
+import {ReactComponent as OriginLogo} from '../../assets/origin-logo.svg';
 
 interface IProps extends RouteComponentProps<{}> {
   logout: () => void;
@@ -31,9 +32,9 @@ class AppNav extends React.PureComponent<IProps, {}, {}> {
       <div>
         <nav className="app-nav navbar navbar-toggleable-md navbar-expand-lg navbar-light bg-light display-front nav-pad">
           <div className="navbar-header c-pointer shift-left">
-            <Link to="/home" className="unset-anchor">
+            <Link to="/home" className="home-button">
               {/* <img className="img-adjust-position rev-logo" src={OriginLogo} alt="revature" /> */}
-              Origin
+              <OriginLogo className="origin-logo" /> Origin
             </Link>
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">

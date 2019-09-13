@@ -7,6 +7,8 @@ import { setup } from '../../actions/auth/auth.actions';
 
 import { Auth } from 'aws-amplify';
 import { RouteComponentProps } from 'react-router';
+import Button from 'reactstrap/lib/Button';
+import { Link } from 'react-router-dom';
 
 interface IComponentState {
   cogUser: any,
@@ -136,12 +138,12 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
       <div className="centered shadow-lg p-3 mb-5 bg-white rounded top-lev-div">
         {!this.state.passwordNeedsReset &&
           <>
-            <h4 id="titleHead">Sign in to SMS</h4>
+            <h4 id="titleHead">Sign in to Origin Awakened Database</h4>
             <form id="login-form" onSubmit={this.submitLogin}>
               <input name="username" type="text" className="form-control txt-bx" placeholder="Username" onChange={this.updateUsername} value={this.state.username} />
 
-              <input name="password" type="password" className="form-control txt-bx" id="login-pass" placeholder="Password" onChange={this.updatePassword} value={this.state.password} />
-              <button className="btn rev-btn">Login</button>
+              <input name="password" type="password" className="form-control txt-bx" id="login-pass" placeholder="Password" onChange={this.updatePassword} value={this.state.password}/>
+              <Button className="origin-btn-blue">Login</Button>
 
             </form>
 
@@ -157,7 +159,7 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
               <input type="text" className="form-control txt-bx" placeholder="New Password" onChange={this.updateNewPassword} value={this.state.newPassword} />
 
               <input id="login-pass" type="password" className="form-control txt-bx" placeholder="Confirm Password" onChange={this.updateConfirmationPassword} value={this.state.confirmationPassword} />
-              <button className="btn rev-btn">Reset</button>
+              <Button className="origin-btn-blue">Reset</Button>
 
             </form>
             {this.state.failToResetPassword &&
@@ -178,6 +180,11 @@ export class LoginComponent extends React.Component<IComponentProps, IComponentS
         }
         <div className="row resetDiv">
           <button id="forgot-pass-btn">Forgot Username or Password</button>
+        </div>
+        <div className="row resetDiv">
+          <Link to="/register">
+            <button id="register-btn">Register with System</button>
+            </Link>
         </div>
       </div>
     );

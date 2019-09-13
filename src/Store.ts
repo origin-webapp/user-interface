@@ -11,7 +11,7 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-export const store: Store<any> = createStore(
+export const store: any = createStore(
   state,
   enhancer,
   applyMiddleware(reduxThunk)
