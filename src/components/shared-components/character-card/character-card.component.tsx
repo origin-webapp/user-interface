@@ -9,6 +9,7 @@ import { CharacterNavComponent } from './character-nav/character-nav.component';
 import { FadesripDisplayComponent } from './fadesrip-display/fadesrip-display.component';
 import { PowersDisplayComponent } from './powers-display/powers-display.component';
 import Input from 'reactstrap/lib/Input';
+import { HealthDisplayComponent } from './health-display/health-display.component';
 import { deleteCharacter } from '../../../actions/characters/characters.actions';
 
 
@@ -76,6 +77,10 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
         <div className="card-body character-card-powers">
           <div className="powers-label">Powers:</div>
           <PowersDisplayComponent characterId={character.id} powers={character.powers} editing={editing} />
+        </div>
+        <div className="card-body character-card-health">
+          <div className="health-label">Health Points:</div>
+          <HealthDisplayComponent character={character} inCampaign={false}/>
         </div>
       </div>
     );

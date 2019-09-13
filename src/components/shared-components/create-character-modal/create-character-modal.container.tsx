@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router';
 import { CreateCharacterModal } from './create-character-modal.component';
 
 export interface ICreateCharacterModal {
-  toggleModal,
+  toggleModal: (creator: string) => void,
   createCharacter: ICreateCharacterState,
   saveCharacter,
   updateNewCharacter,

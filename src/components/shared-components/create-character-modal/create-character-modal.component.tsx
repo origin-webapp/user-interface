@@ -1,14 +1,11 @@
 import * as React from 'react';
-
-import {
-  Button, Modal, ModalHeader, ModalBody, ModalFooter,
-  InputGroup, InputGroupText, InputGroupAddon, Input
-} from 'reactstrap';
-import { ICreateCharacterModal } from './create-character-modal.container';
-import Character from '../../../model/character.model';
-import { Stats } from 'fs';
+import { Button, Input, InputGroup, InputGroupAddon, InputGroupText, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import CharacterStats from '../../../model/character-stats.model';
+import Character from '../../../model/character.model';
 import { FadesripDisplayComponent } from '../character-card/fadesrip-display/fadesrip-display.component';
+import { PowersDisplayComponent } from '../character-card/powers-display/powers-display.component';
+import { ICreateCharacterModal } from './create-character-modal.container';
+import { Power } from '../../../model/power.model';
 
 
 const inputNames = {
@@ -47,10 +44,19 @@ export class CreateCharacterModal extends React.Component<ICreateCharacterModal,
   }
 
   updateFadesRip = (s: CharacterStats) => {
-    this.updateNewCharacterInfo({target: {
-      name: inputNames.STATS,
-      value: s
-    }})
+    this.updateNewCharacterInfo({
+      target: {
+        name: inputNames.STATS,
+        value: s
+      }
+    })
+  }
+
+  addPower = (power: Partial<Power>) => {
+    this.props.updateNewCharacter({
+      ...this.props.createCharacter.newCharacter,
+      powers: [...this.props.createCharacter.newCharacter.powers, power]
+    })
   }
 
   saveNewCharacter = (e) => {
@@ -64,6 +70,8 @@ export class CreateCharacterModal extends React.Component<ICreateCharacterModal,
   render() {
 
     const { createCharacter } = this.props;
+
+    const {addPower} = this;
     return (
       <Modal isOpen={this.props.createCharacter.enabled}>
         <form onSubmit={this.saveNewCharacter}>
@@ -88,15 +96,36 @@ export class CreateCharacterModal extends React.Component<ICreateCharacterModal,
                 </InputGroupAddon>
                 <FadesripDisplayComponent
                   stats={createCharacter.newCharacter ? createCharacter.newCharacter.stats : new CharacterStats}
-                  editing={{ isEditing: true, updateStats: this.updateFadesRip  }}
+                  editing={{ isEditing: true, updateStats: this.updateFadesRip }}
                 />
 
               </InputGroup>
+              <div className="responsive-modal-row">
+                <InputGroup className="responsive-modal-row-item">
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>Starting Powers</InputGroupText>
+                  </InputGroupAddon>
+                  <PowersDisplayComponent
+                    {...createCharacter}
+                    editing={
+                      {
+                        isEditing: true,
+                        powerMechanics: [],
+                        addPower,
+                        updatePower: (power: Partial<Power>) => {},
+                        deletePower: (powerId: number) => {},
+                        deleteCharacter: (characterId: number) => {}
+                      }
+                    }
+                    powers={createCharacter.newCharacter.powers}
+                    characterId={createCharacter.newCharacter.id} />
+                </InputGroup>
+              </div>
             </div>
           </ModalBody>
           <ModalFooter id="create-character-modal-footer">
             <Button type="submit" className="rev-btn">Save</Button>{' '}
-            <Button color="secondary" onClick={this.props.toggleModal}>Cancel</Button>
+            <Button color="secondary" onClick={() => this.props.toggleModal('')}>Cancel</Button>
           </ModalFooter>
         </form>
       </Modal>

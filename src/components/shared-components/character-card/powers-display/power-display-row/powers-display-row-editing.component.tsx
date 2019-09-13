@@ -27,6 +27,7 @@ export const PowersDisplayRowEditingComponent: React.FunctionComponent<IProps> =
   const [showPowerMechanicDropdown, setShowPowerMechanicDropdown] = React.useState(false);
   const [showToolTip, setShowToolTip] = React.useState(false);
 
+
   function updatePower(e) {
     e.preventDefault();
     const updatedPower = {

@@ -30,7 +30,7 @@ export interface ICreateUserState {
 
 export interface ICreateCharacterState {
   enabled: boolean,
-  newCharacter?: Character
+  newCharacter: Character
 }
 
 export interface IManageUsersState {

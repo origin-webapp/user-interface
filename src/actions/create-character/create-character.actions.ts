@@ -8,9 +8,10 @@ export const createCharacterTypes = {
   CHARACTER_SAVED: 'CREATE_NEW_CHARACTER_CHARACTER_SAVED'
 }
 
-export const toggleModal = () => {
+export const toggleModal = (creator: string) => {
   return {
     payload: {
+      creator
     },
     type: createCharacterTypes.TOGGLE
   }
@@ -30,7 +31,7 @@ export const saveCharacter = (newCharacter: Character) => (dispatch) => {
     .then(resp => {
       toast.success('Character Created')
       dispatch({
-        payload: {},
+        payload: resp.data,
         type: createCharacterTypes.CHARACTER_SAVED
       })
     })

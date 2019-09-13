@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IMyCharactersState } from '../../reducers';
+import { IMyCharactersState, IAuthState } from '../../reducers';
 import { FaUserPlus } from 'react-icons/fa';
 import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
@@ -7,8 +7,10 @@ import Character from '../../model/character.model';
 
 interface IProps {
   myCharacters: IMyCharactersState,
+  auth: IAuthState,
   setCurrentCharacterId: (CharacterId: number) => void,
-  createCharacter: (character?: Partial<Character>) => void
+  createCharacter: (character?: Partial<Character>) => void,
+  toggleCreateCharacter: (creator: string) => void
 }
 
 export class CharacterListCardComponent extends React.Component<IProps, any> {
@@ -20,7 +22,7 @@ export class CharacterListCardComponent extends React.Component<IProps, any> {
           <Row>
             <Col>Characters</Col>
             <Col>  
-              <FaUserPlus className="cursor-hover" onClick={() => this.props.createCharacter()}/>
+              <FaUserPlus className="cursor-hover" onClick={() => this.props.toggleCreateCharacter(this.props.auth.currentUser.username)}/>
             </Col>
           </Row>
         </div>

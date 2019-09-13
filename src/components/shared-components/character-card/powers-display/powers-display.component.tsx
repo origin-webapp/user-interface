@@ -66,7 +66,7 @@ export const PowersDisplayComponent: React.FunctionComponent<IPowerDisplayProps>
     {
       editing && editing.isEditing &&
       <div id="edit-power-buttons">
-        <button className="btn origin-btn" onClick={addPower}>New Power</button>
+        <button type="button" className="btn origin-btn" onClick={addPower}>New Power</button>
         <button className="btn origin-btn-red" onClick={() => setShowDeleteModal(true)}>Delete Character</button>
       </div>
     }

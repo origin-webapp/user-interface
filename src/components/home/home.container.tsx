@@ -9,7 +9,8 @@ import * as createCharacterActions from '../../actions/create-character/create-c
 const mapStateToProps = (state: IState) => ({
   currentUsername: state.auth.currentUser.username,
   myCharacters: state.myCharacters,
-  powerMechanics: state.powerMechanics
+  powerMechanics: state.powerMechanics,
+  auth: state.auth
 })
 
 const mapDispatchToProps = {
@@ -26,4 +27,4 @@ const mapDispatchToProps = {
   deleteCharacter
 }
 
-export const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
+export const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);  

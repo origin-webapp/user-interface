@@ -12,6 +12,8 @@ import ManageComponent from './components/manage/manage.container';
 import  LoginComponent  from './components/login/login.component';
 import { ToastContainer, toast } from 'react-toastify';
 import { HomeContainer } from './components/home/home.container';
+import CreateCharacterModal from './components/shared-components/create-character-modal/create-character-modal.container';
+
 
 class App extends React.Component {
   public render() {
@@ -31,6 +33,7 @@ class App extends React.Component {
               </Switch>
             </div>
             <ToastContainer autoClose={2000} position={toast.POSITION.BOTTOM_RIGHT}/>
+            <CreateCharacterModal />
           </div>
         </BrowserRouter>
       </Provider>

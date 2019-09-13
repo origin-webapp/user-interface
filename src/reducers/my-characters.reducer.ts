@@ -1,6 +1,8 @@
 import { IMyCharactersState } from '.';
 import { myCharactersTypes } from '../actions/my-characters/my-characters.actions';
 import { characterTypes } from '../actions/characters/characters.actions';
+import { createCharacterTypes } from '../actions/create-character/create-character.actions';
+import { store } from '../Store';
 
 const initialState: IMyCharactersState = {
   characters: [{
@@ -99,6 +101,15 @@ export const myCharactersReducer = (state = initialState, action: any): IMyChara
         })
       }
     }
+    case createCharacterTypes.CHARACTER_SAVED: {
+      if(store.getState().auth.currentUser.username === action.payload.creator) {
+        return {
+          ...state,
+          characters: [...state.characters, action.payload]
+        }
+      }
+      break;
+    }
     case characterTypes.SAVE_CHARACTER: {
       if (action.payload.isCurrentUsers) {
         return {
@@ -106,6 +117,7 @@ export const myCharactersReducer = (state = initialState, action: any): IMyChara
           characters: [...state.characters, action.payload.character]
         }
       }
+      break;
     }
     case characterTypes.UPDATE_CHARACTER: {
       return {
@@ -121,11 +133,12 @@ export const myCharactersReducer = (state = initialState, action: any): IMyChara
     }
     case characterTypes.DELETE_CHARACTER: {
       const characters = state.characters;
+      const filteredCharacters = characters.filter(character => character.id !== action.payload.id)
       return {
         ...state,
-        characters: characters.filter(character => character.id !== action.payload.id),
-        currentCharacterId: characters.length && characters[0].id,
-        isEditing: false
+        characters: filteredCharacters,
+        currentCharacterId: filteredCharacters.length && filteredCharacters[0].id,
+        isEditing: false,
       }
     }
     case characterTypes.UPDATE_POWER: {

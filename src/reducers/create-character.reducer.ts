@@ -1,18 +1,24 @@
 import { ICreateCharacterState } from '.';
 import { authTypes } from '../actions/auth/auth.actions';
 import { createCharacterTypes } from '../actions/create-character/create-character.actions';
+import Character from '../model/character.model';
 
 const initialState: ICreateCharacterState = {
   enabled: false,
+  newCharacter: new Character()
   
 }
 
-export const createCharacterReducer = (state = initialState, action: any) => {
+export const createCharacterReducer = (state = initialState, action: any): ICreateCharacterState => {
   switch (action.type) {
     case createCharacterTypes.TOGGLE:
       return {
         ...state,
-        enabled: !state.enabled
+        enabled: !state.enabled,
+        newCharacter: {
+          ...state.newCharacter,
+          creator: action.payload.creator
+        }
       }
     case createCharacterTypes.UPDATE_NEW_CHARACTER:
       return {
