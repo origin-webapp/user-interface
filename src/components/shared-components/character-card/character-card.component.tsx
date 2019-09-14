@@ -40,6 +40,18 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
 
   }
 
+  calculateTotalWell = () => {
+
+    let greatestPower = 0;
+
+    for (let power of this.props.character.powers) {
+      if (power.rank > greatestPower) {
+        greatestPower = power.rank;
+      }
+    }
+    return greatestPower * this.props.character.well_multiplier;
+  }
+
   public render() {
     const { character, editing } = this.props;
     return (
@@ -74,14 +86,39 @@ export class CharacterCardComponent extends React.PureComponent<ICharacterCardCo
             editing={editing}
           />
         </div>
+        <div className="card-body character-health-well-karma-bar">
+          <div className="flex-col">
+            <div className="health-label">Health Points:</div>
+            <HealthDisplayComponent character={character} inCampaign={false} />
+          </div>
+          <div className="flex-col">
+            <div className="well-label">Well Multiplier:</div>
+            {editing && editing.isEditing
+              ? <Input className="character-well-multiplier-input" type="number" name="well_multiplier" defaultValue={'' + character.well_multiplier} onBlur={this.updateCharacter} />
+              : <div>
+                {character.well_multiplier}
+              </div>
+            }
+          </div>
+          <div className="flex-col">
+            <div className="total-well-label">Total Well:</div>
+            {this.calculateTotalWell()}
+          </div>
+          <div className="flex-col">
+            <div className="karma-label">Karma:</div>
+            {editing && editing.isEditing
+              ? <Input className="character-karma-input" type="number" name="karma" defaultValue={'' + character.karma} onBlur={this.updateCharacter} />
+              : <div>
+                {character.karma}
+              </div>
+            }
+          </div>
+        </div>
         <div className="card-body character-card-powers">
           <div className="powers-label">Powers:</div>
           <PowersDisplayComponent characterId={character.id} powers={character.powers} editing={editing} />
         </div>
-        <div className="card-body character-card-health">
-          <div className="health-label">Health Points:</div>
-          <HealthDisplayComponent character={character} inCampaign={false}/>
-        </div>
+
       </div>
     );
   }

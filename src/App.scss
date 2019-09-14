@@ -523,6 +523,12 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.character-health-well-karma-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 /*****************************
   Clicker
 *****************************/

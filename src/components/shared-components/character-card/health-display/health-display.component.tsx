@@ -27,11 +27,11 @@ export class HealthDisplayComponent extends React.PureComponent<IHealthProps, IS
 
     getMaxHealth(): number {
         let maxHealth = 0;
-        maxHealth += this.props.character.stats.fighting;
-        maxHealth += this.props.character.stats.agility;
-        maxHealth += this.props.character.stats.dexterity;
-        maxHealth += 3 * this.props.character.stats.endurance;
-        maxHealth += this.props.character.stats.strength;
+        maxHealth += +this.props.character.stats.fighting;
+        maxHealth += +this.props.character.stats.agility;
+        maxHealth += +this.props.character.stats.dexterity;
+        maxHealth += 3 * +this.props.character.stats.endurance;
+        maxHealth += +this.props.character.stats.strength;
         return maxHealth;
     }
 
