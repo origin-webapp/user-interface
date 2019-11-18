@@ -4,7 +4,6 @@ import { Col, Popover, PopoverBody, Row } from 'reactstrap';
 import PopoverHeader from 'reactstrap/lib/PopoverHeader';
 import { GiMailedFist, GiPocketBow, GiRunningShoe, GiHeartBeats, GiWeightLiftingUp, GiJigsawPiece, GiSheikahEye, GiPsychicWaves } from 'react-icons/gi';
 import CharacterStats from '../../../../model/character-stats.model';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 
 interface IState {

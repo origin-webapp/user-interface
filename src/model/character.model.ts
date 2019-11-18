@@ -9,8 +9,8 @@ export default class Character {
     public creator: string = '', // email of the person who this character belongs to
     public stats: CharacterStats = new CharacterStats(),
     public powers: Power[] = [],
-    public well_multiplier: 10,
-    public karma: 0) { }
+    public well_multiplier=  10,
+    public karma = 0) { }
     
 
 }

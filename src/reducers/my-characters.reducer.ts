@@ -34,7 +34,9 @@ const initialState: IMyCharactersState = {
       psyche: 20,
       reason: 15,
       strength: 40
-    }
+    },
+    karma: 1000,
+    well_multiplier: 11
   },
   {
     creator: 'nicklurch',
@@ -65,7 +67,9 @@ const initialState: IMyCharactersState = {
       psyche: 20,
       reason: 15,
       strength: 40
-    }
+    },
+    karma: 1000,
+    well_multiplier: 11
   }],
   currentCharacterId: 0,
   isEditing: false,
